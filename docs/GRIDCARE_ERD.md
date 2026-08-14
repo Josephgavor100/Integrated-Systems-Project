@@ -1,4 +1,4 @@
-# GridCare-Lite Entity-Relationship Documentation
+# GridCare-Lite Entity-Relationship Documentation (Updated)
 
 ## 1. Overview
 

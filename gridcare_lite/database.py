@@ -1,6 +1,7 @@
 import sqlite3
 import os
 
+# Updated
 # Dynamically resolve path to gridcare.db inside gridcare_lite directory
 DB_PATH = os.path.join(os.path.dirname(__file__), "gridcare.db")
 

@@ -1,3 +1,4 @@
+"""Updated Requirements for the project"""
 pandas
 networkx
 folium
