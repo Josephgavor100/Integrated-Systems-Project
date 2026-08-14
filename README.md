@@ -21,4 +21,3 @@ An end-to-end multi-application platform designed to simulate critical national 
    - Web application (Flask/Bootstrap) for patient registration and non-diagnostic task routing.
    - Secure authentication (bcrypt, regex validation) and file upload verification.
    - Internal messaging, notification dispatch, and operational analytics.
-
