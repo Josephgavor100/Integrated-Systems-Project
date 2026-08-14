@@ -1,0 +1,7 @@
+pandas
+networkx
+folium
+plotly
+streamlit
+flask
+flask-bcrypt
