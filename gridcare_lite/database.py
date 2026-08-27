@@ -1,17 +1,23 @@
 import sqlite3
-import os
+import hashlib
+from pathlib import Path
 
-# Updated
-# Dynamically resolve path to gridcare.db inside gridcare_lite directory
-DB_PATH = os.path.join(os.path.dirname(__file__), "gridcare.db")
+# Target central project data folder using pathlib
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+DB_PATH = PROJECT_ROOT / "data" / "gridcare.db"
 
+def hash_password(password: str) -> str:
+    """Hash plain text password using SHA-256."""
+    return hashlib.sha256(password.encode()).hexdigest()
 
 def init_db():
+    """Initialize database tables matching your initial schema and seed default users."""
+    DB_PATH.parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
 
-    # 1. Users table (Role-Based Access Control)
-    cursor.execute('''
+    # 1. Users table (Matching your initial schema from last week)
+    cursor.execute("""
         CREATE TABLE IF NOT EXISTS users (
             user_id INTEGER PRIMARY KEY AUTOINCREMENT,
             username TEXT UNIQUE NOT NULL,
@@ -19,53 +25,83 @@ def init_db():
             role TEXT CHECK(role IN ('Admin', 'Engineer', 'Technician', 'Customer Service')) NOT NULL,
             full_name TEXT NOT NULL
         )
-    ''')
+    """)
 
-    # 2. Substations reference table
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS substations (
-            substation_id INTEGER PRIMARY KEY,
-            name TEXT NOT NULL,
-            region TEXT NOT NULL,
-            voltage_kv REAL,
-            capacity_mva REAL,
-            status TEXT
-        )
-    ''')
-
-    # 3. Outages table
-    cursor.execute('''
+    # 2. Outages table
+    cursor.execute("""
         CREATE TABLE IF NOT EXISTS outages (
             outage_id INTEGER PRIMARY KEY AUTOINCREMENT,
-            substation_id INTEGER NOT NULL,
-            reported_by INTEGER NOT NULL,
-            fault_type TEXT NOT NULL,
-            severity TEXT CHECK(severity IN ('Low', 'Medium', 'High', 'Critical')) NOT NULL,
-            status TEXT CHECK(status IN ('Open', 'Assigned', 'In Progress', 'Resolved')) DEFAULT 'Open',
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (substation_id) REFERENCES substations (substation_id),
-            FOREIGN KEY (reported_by) REFERENCES users (user_id)
+            region TEXT NOT NULL,
+            severity TEXT NOT NULL,
+            status TEXT NOT NULL,
+            description TEXT NOT NULL,
+            timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
         )
-    ''')
+    """)
 
-    # 4. Work Orders table
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS work_orders (
-            work_order_id INTEGER PRIMARY KEY AUTOINCREMENT,
-            outage_id INTEGER UNIQUE NOT NULL,
-            assigned_technician_id INTEGER,
-            scheduled_date TEXT,
-            resolution_notes TEXT,
-            completed_at TIMESTAMP,
-            FOREIGN KEY (outage_id) REFERENCES outages (outage_id),
-            FOREIGN KEY (assigned_technician_id) REFERENCES users (user_id)
+    # Seed Default Accounts if empty
+    cursor.execute("SELECT COUNT(*) FROM users")
+    if cursor.fetchone()[0] == 0:
+        default_users = [
+            ("admin", hash_password("admin123"), "Admin", "System Admin"),
+            ("engineer", hash_password("eng123"), "Engineer", "Lead Engineer"),
+            ("tech", hash_password("tech123"), "Technician", "Field Technician")
+        ]
+        cursor.executemany(
+            "INSERT INTO users (username, password_hash, role, full_name) VALUES (?, ?, ?, ?)",
+            default_users
         )
-    ''')
+
+    # Seed Sample Outages if empty
+    cursor.execute("SELECT COUNT(*) FROM outages")
+    if cursor.fetchone()[0] == 0:
+        sample_outages = [
+            ("Accra Central", "High", "Active", "Transformer failure at Substation 4"),
+            ("Tema Industrial", "Critical", "Investigating", "Main feeder line trip"),
+            ("Kumasi North", "Medium", "Resolved", "Scheduled maintenance completed")
+        ]
+        cursor.executemany(
+            "INSERT INTO outages (region, severity, status, description) VALUES (?, ?, ?, ?)",
+            sample_outages
+        )
 
     conn.commit()
     conn.close()
-    print("GridCare-Lite Database initialized successfully.")
 
+def verify_user(username, password):
+    """Authenticate user against user_id, password_hash, and role."""
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute(
+        "SELECT user_id, username, full_name, role FROM users WHERE username = ? AND password_hash = ?",
+        (username, hash_password(password))
+    )
+    user = cursor.fetchone()
+    conn.close()
+    if user:
+        return {"user_id": user[0], "username": user[1], "full_name": user[2], "role": user[3]}
+    return None
 
+def fetch_all_outages():
+    """Retrieve all outage records."""
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute("SELECT outage_id, region, severity, status, description, timestamp FROM outages ORDER BY outage_id DESC")
+    records = cursor.fetchall()
+    conn.close()
+    return records
+
+def add_outage(region, severity, status, description):
+    """Create a new outage entry."""
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute(
+        "INSERT INTO outages (region, severity, status, description) VALUES (?, ?, ?, ?)",
+        (region, severity, status, description)
+    )
+    conn.commit()
+    conn.close()
+    
 if __name__ == "__main__":
     init_db()
+    print("Database initialized successfully at data/gridcare.db!")
