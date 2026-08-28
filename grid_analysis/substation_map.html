@@ -1,0 +1,3418 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_bc1e5df5d7c35616c77a9f80422013a3 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+</head>
+<body>
+    
+    
+<div style="
+    position: fixed;
+    top: 10px;
+    left: 50px;
+    z-index: 9999;
+    background-color: white;
+    padding: 10px 18px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+">
+    <h3 style="margin: 0;">
+        National Electricity Grid Network Map
+    </h3>
+</div>
+    
+            <div class="folium-map" id="map_bc1e5df5d7c35616c77a9f80422013a3" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_bc1e5df5d7c35616c77a9f80422013a3 = L.map(
+                "map_bc1e5df5d7c35616c77a9f80422013a3",
+                {
+                    center: [6.76817380952381, -0.908754761904762],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_ae27ce0fcbfcddcffee9979353f34cbf = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_ae27ce0fcbfcddcffee9979353f34cbf.addTo(map_bc1e5df5d7c35616c77a9f80422013a3);
+        
+    
+            var feature_group_f53fe836afd6feeefc84a24daad2f0fb = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_642fd4c613ebb6275026eda0f356e686 = L.circleMarker(
+                [5.6596, -0.0226],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_f53fe836afd6feeefc84a24daad2f0fb);
+        
+    
+        var popup_559e17ff7b556c59ccf81c076543f569 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_baa203e31ad086293bd69d5610966068 = $(`<div id="html_baa203e31ad086293bd69d5610966068" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Tema Substation</h4>          <b>Substation ID:</b> 2<br>         <b>Region:</b> Greater Accra<br>         <b>Voltage:</b> 330 kV<br>         <b>Capacity:</b> 48.5 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_559e17ff7b556c59ccf81c076543f569.setContent(html_baa203e31ad086293bd69d5610966068);
+            
+        
+
+        circle_marker_642fd4c613ebb6275026eda0f356e686.bindPopup(popup_559e17ff7b556c59ccf81c076543f569)
+        ;
+
+        
+    
+    
+            circle_marker_642fd4c613ebb6275026eda0f356e686.bindTooltip(
+                `<div>
+                     Tema Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4ff1b3298ba051c167f0ecd13f8ec125 = L.circleMarker(
+                [5.563, -0.2971],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_f53fe836afd6feeefc84a24daad2f0fb);
+        
+    
+        var popup_b7730da446b277fb5456fdfb2f642a13 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a415797de8e3b7bc164640cc0ba25e07 = $(`<div id="html_a415797de8e3b7bc164640cc0ba25e07" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Mallam Substation</h4>          <b>Substation ID:</b> 3<br>         <b>Region:</b> Greater Accra<br>         <b>Voltage:</b> 330 kV<br>         <b>Capacity:</b> 25.2 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_b7730da446b277fb5456fdfb2f642a13.setContent(html_a415797de8e3b7bc164640cc0ba25e07);
+            
+        
+
+        circle_marker_4ff1b3298ba051c167f0ecd13f8ec125.bindPopup(popup_b7730da446b277fb5456fdfb2f642a13)
+        ;
+
+        
+    
+    
+            circle_marker_4ff1b3298ba051c167f0ecd13f8ec125.bindTooltip(
+                `<div>
+                     Mallam Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3067a8066cf4929117118479c7be0c45 = L.circleMarker(
+                [6.7128, -1.4716],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_f53fe836afd6feeefc84a24daad2f0fb);
+        
+    
+        var popup_de35a521151cc30922707a4459138a67 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_293738ed858216cc05ac2fdec344030d = $(`<div id="html_293738ed858216cc05ac2fdec344030d" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Ejisu Substation</h4>          <b>Substation ID:</b> 8<br>         <b>Region:</b> Ashanti<br>         <b>Voltage:</b> 330 kV<br>         <b>Capacity:</b> 355.9 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_de35a521151cc30922707a4459138a67.setContent(html_293738ed858216cc05ac2fdec344030d);
+            
+        
+
+        circle_marker_3067a8066cf4929117118479c7be0c45.bindPopup(popup_de35a521151cc30922707a4459138a67)
+        ;
+
+        
+    
+    
+            circle_marker_3067a8066cf4929117118479c7be0c45.bindTooltip(
+                `<div>
+                     Ejisu Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7c6f119a476617f617ca3623a544abf7 = L.circleMarker(
+                [5.362, -0.6218],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_f53fe836afd6feeefc84a24daad2f0fb);
+        
+    
+        var popup_c3bd2d8b375644119e82e8e45765526c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e99b8142d990fdfbc6bf7d2337a1d631 = $(`<div id="html_e99b8142d990fdfbc6bf7d2337a1d631" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Winneba Substation</h4>          <b>Substation ID:</b> 17<br>         <b>Region:</b> Central<br>         <b>Voltage:</b> 330 kV<br>         <b>Capacity:</b> 168.8 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_c3bd2d8b375644119e82e8e45765526c.setContent(html_e99b8142d990fdfbc6bf7d2337a1d631);
+            
+        
+
+        circle_marker_7c6f119a476617f617ca3623a544abf7.bindPopup(popup_c3bd2d8b375644119e82e8e45765526c)
+        ;
+
+        
+    
+    
+            circle_marker_7c6f119a476617f617ca3623a544abf7.bindTooltip(
+                `<div>
+                     Winneba Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2ebf51f6457c729430df551039eded7d = L.circleMarker(
+                [6.6194, 0.473],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_f53fe836afd6feeefc84a24daad2f0fb);
+        
+    
+        var popup_842c2a6ea051dfd68536cc15f1e949a8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6f5c878539e18b44ee3f2d1cb6348b92 = $(`<div id="html_6f5c878539e18b44ee3f2d1cb6348b92" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Ho Substation</h4>          <b>Substation ID:</b> 24<br>         <b>Region:</b> Volta<br>         <b>Voltage:</b> 330 kV<br>         <b>Capacity:</b> 382.1 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_842c2a6ea051dfd68536cc15f1e949a8.setContent(html_6f5c878539e18b44ee3f2d1cb6348b92);
+            
+        
+
+        circle_marker_2ebf51f6457c729430df551039eded7d.bindPopup(popup_842c2a6ea051dfd68536cc15f1e949a8)
+        ;
+
+        
+    
+    
+            circle_marker_2ebf51f6457c729430df551039eded7d.bindTooltip(
+                `<div>
+                     Ho Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2d700259e3f54784093d0346f3625dcb = L.circleMarker(
+                [11.2, -0.75],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_f53fe836afd6feeefc84a24daad2f0fb);
+        
+    
+        var popup_f75d8bf205bca596ae28ad58ee47e2c2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9e3e12a043818eff9462b0a793cd767c = $(`<div id="html_9e3e12a043818eff9462b0a793cd767c" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Bolgatanga Interconnection</h4>          <b>Substation ID:</b> 37<br>         <b>Region:</b> Burkina Faso border<br>         <b>Voltage:</b> 330 kV<br>         <b>Capacity:</b> 156.1 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_f75d8bf205bca596ae28ad58ee47e2c2.setContent(html_9e3e12a043818eff9462b0a793cd767c);
+            
+        
+
+        circle_marker_2d700259e3f54784093d0346f3625dcb.bindPopup(popup_f75d8bf205bca596ae28ad58ee47e2c2)
+        ;
+
+        
+    
+    
+            circle_marker_2d700259e3f54784093d0346f3625dcb.bindTooltip(
+                `<div>
+                     Bolgatanga Interconnection
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_01dbf86266799425cf3d038c01400881 = L.circleMarker(
+                [5.2, -2.85],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_f53fe836afd6feeefc84a24daad2f0fb);
+        
+    
+        var popup_960209e4ac4e5e8dcd2815afc2c3c6a9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_01e5c8fb85b2ce58eb26a1f22a4d268a = $(`<div id="html_01e5c8fb85b2ce58eb26a1f22a4d268a" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Elubo Border Station</h4>          <b>Substation ID:</b> 38<br>         <b>Region:</b> Cote d'Ivoire border<br>         <b>Voltage:</b> 330 kV<br>         <b>Capacity:</b> 285.1 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_960209e4ac4e5e8dcd2815afc2c3c6a9.setContent(html_01e5c8fb85b2ce58eb26a1f22a4d268a);
+            
+        
+
+        circle_marker_01dbf86266799425cf3d038c01400881.bindPopup(popup_960209e4ac4e5e8dcd2815afc2c3c6a9)
+        ;
+
+        
+    
+    
+            circle_marker_01dbf86266799425cf3d038c01400881.bindTooltip(
+                `<div>
+                     Elubo Border Station
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4bcd1fb81a141ff417de1de5a3a33d15 = L.circleMarker(
+                [6.12, 1.19],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_f53fe836afd6feeefc84a24daad2f0fb);
+        
+    
+        var popup_4809197af378126e6ef201035028efed = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cbdb5453e501e749111a058f94a568d9 = $(`<div id="html_cbdb5453e501e749111a058f94a568d9" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Aflao Border Station</h4>          <b>Substation ID:</b> 39<br>         <b>Region:</b> Togo border<br>         <b>Voltage:</b> 330 kV<br>         <b>Capacity:</b> 423.2 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_4809197af378126e6ef201035028efed.setContent(html_cbdb5453e501e749111a058f94a568d9);
+            
+        
+
+        circle_marker_4bcd1fb81a141ff417de1de5a3a33d15.bindPopup(popup_4809197af378126e6ef201035028efed)
+        ;
+
+        
+    
+    
+            circle_marker_4bcd1fb81a141ff417de1de5a3a33d15.bindTooltip(
+                `<div>
+                     Aflao Border Station
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ff94b343e66539638aff1ff309f6bdd9 = L.circleMarker(
+                [7.4443, -2.5946],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_f53fe836afd6feeefc84a24daad2f0fb);
+        
+    
+        var popup_838754c0d6b52663c29ee04bd259d8d9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2965f4bce56617530b8986730b73301e = $(`<div id="html_2965f4bce56617530b8986730b73301e" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Berekum Substation</h4>          <b>Substation ID:</b> 30<br>         <b>Region:</b> Bono<br>         <b>Voltage:</b> 330 kV<br>         <b>Capacity:</b> 188.8 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_838754c0d6b52663c29ee04bd259d8d9.setContent(html_2965f4bce56617530b8986730b73301e);
+            
+        
+
+        circle_marker_ff94b343e66539638aff1ff309f6bdd9.bindPopup(popup_838754c0d6b52663c29ee04bd259d8d9)
+        ;
+
+        
+    
+    
+            circle_marker_ff94b343e66539638aff1ff309f6bdd9.bindTooltip(
+                `<div>
+                     Berekum Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_f53fe836afd6feeefc84a24daad2f0fb.addTo(map_bc1e5df5d7c35616c77a9f80422013a3);
+        
+    
+            var feature_group_d431a2606bf10d5833e490e22f19d015 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            feature_group_d431a2606bf10d5833e490e22f19d015.addTo(map_bc1e5df5d7c35616c77a9f80422013a3);
+        
+    
+            var feature_group_492d03242e702e0fcfbb2a2608b37d51 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_a3df5084e6b0ccc450990bd29984a228 = L.circleMarker(
+                [5.6401, -0.1799],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_492d03242e702e0fcfbb2a2608b37d51);
+        
+    
+        var popup_66f446e05452eb0537b7aa6db461ed39 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e186cc1ec851c48d6d2cd6f74269952d = $(`<div id="html_e186cc1ec851c48d6d2cd6f74269952d" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Legon Substation</h4>          <b>Substation ID:</b> 4<br>         <b>Region:</b> Greater Accra<br>         <b>Voltage:</b> 161 kV<br>         <b>Capacity:</b> 241.9 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_66f446e05452eb0537b7aa6db461ed39.setContent(html_e186cc1ec851c48d6d2cd6f74269952d);
+            
+        
+
+        circle_marker_a3df5084e6b0ccc450990bd29984a228.bindPopup(popup_66f446e05452eb0537b7aa6db461ed39)
+        ;
+
+        
+    
+    
+            circle_marker_a3df5084e6b0ccc450990bd29984a228.bindTooltip(
+                `<div>
+                     Legon Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_69667379726f658e36e6537adc14ed05 = L.circleMarker(
+                [6.6856, -1.623],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_492d03242e702e0fcfbb2a2608b37d51);
+        
+    
+        var popup_f988c4e003afa7f55f3416434095ea22 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_197bd4ccdf859f4f9c447671cb200c89 = $(`<div id="html_197bd4ccdf859f4f9c447671cb200c89" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Kumasi Central Substation</h4>          <b>Substation ID:</b> 7<br>         <b>Region:</b> Ashanti<br>         <b>Voltage:</b> 161 kV<br>         <b>Capacity:</b> 221.4 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_f988c4e003afa7f55f3416434095ea22.setContent(html_197bd4ccdf859f4f9c447671cb200c89);
+            
+        
+
+        circle_marker_69667379726f658e36e6537adc14ed05.bindPopup(popup_f988c4e003afa7f55f3416434095ea22)
+        ;
+
+        
+    
+    
+            circle_marker_69667379726f658e36e6537adc14ed05.bindTooltip(
+                `<div>
+                     Kumasi Central Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f300d111be723b31b341b07a8a77da4c = L.circleMarker(
+                [10.7789, -0.8524],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_492d03242e702e0fcfbb2a2608b37d51);
+        
+    
+        var popup_bb532fbdb7e3bb2d6eefd856b27de5a7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_66300363fb235461f8a523d323de525d = $(`<div id="html_66300363fb235461f8a523d323de525d" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Bolgatanga Substation</h4>          <b>Substation ID:</b> 34<br>         <b>Region:</b> Upper East<br>         <b>Voltage:</b> 161 kV<br>         <b>Capacity:</b> 325.9 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_bb532fbdb7e3bb2d6eefd856b27de5a7.setContent(html_66300363fb235461f8a523d323de525d);
+            
+        
+
+        circle_marker_f300d111be723b31b341b07a8a77da4c.bindPopup(popup_bb532fbdb7e3bb2d6eefd856b27de5a7)
+        ;
+
+        
+    
+    
+            circle_marker_f300d111be723b31b341b07a8a77da4c.bindTooltip(
+                `<div>
+                     Bolgatanga Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6e2d93193009a91b40bd9aee6181b887 = L.circleMarker(
+                [6.13, 1.22],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_492d03242e702e0fcfbb2a2608b37d51);
+        
+    
+        var popup_a558c22182a5dccc2ed3d92d96aa92cc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1b5bfaafb5cca4bcd349217f3bb100aa = $(`<div id="html_1b5bfaafb5cca4bcd349217f3bb100aa" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Lome Transmission Hub</h4>          <b>Substation ID:</b> 40<br>         <b>Region:</b> Togo<br>         <b>Voltage:</b> 161 kV<br>         <b>Capacity:</b> 120.2 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_a558c22182a5dccc2ed3d92d96aa92cc.setContent(html_1b5bfaafb5cca4bcd349217f3bb100aa);
+            
+        
+
+        circle_marker_6e2d93193009a91b40bd9aee6181b887.bindPopup(popup_a558c22182a5dccc2ed3d92d96aa92cc)
+        ;
+
+        
+    
+    
+            circle_marker_6e2d93193009a91b40bd9aee6181b887.bindTooltip(
+                `<div>
+                     Lome Transmission Hub
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9b81c30165200f66cd36d23819bdcc64 = L.circleMarker(
+                [5.5691, -0.2413],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_492d03242e702e0fcfbb2a2608b37d51);
+        
+    
+        var popup_0811e71e62057e1d6afd2c9e41c809a6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4bd74b49c92d1e0da39ed8d039163101 = $(`<div id="html_4bd74b49c92d1e0da39ed8d039163101" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Kaneshie Substation</h4>          <b>Substation ID:</b> 5<br>         <b>Region:</b> Greater Accra<br>         <b>Voltage:</b> 161 kV<br>         <b>Capacity:</b> 146.0 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_0811e71e62057e1d6afd2c9e41c809a6.setContent(html_4bd74b49c92d1e0da39ed8d039163101);
+            
+        
+
+        circle_marker_9b81c30165200f66cd36d23819bdcc64.bindPopup(popup_0811e71e62057e1d6afd2c9e41c809a6)
+        ;
+
+        
+    
+    
+            circle_marker_9b81c30165200f66cd36d23819bdcc64.bindTooltip(
+                `<div>
+                     Kaneshie Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_43667bd5b416c886b061e457bfbbd0c4 = L.circleMarker(
+                [5.5921, -0.1439],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_492d03242e702e0fcfbb2a2608b37d51);
+        
+    
+        var popup_df43ce8600fe40232834bf84ed4021a5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3061862c49df8041de7f481109c65ae6 = $(`<div id="html_3061862c49df8041de7f481109c65ae6" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Aboadze Junction Substation</h4>          <b>Substation ID:</b> 6<br>         <b>Region:</b> Greater Accra<br>         <b>Voltage:</b> 161 kV<br>         <b>Capacity:</b> 52.2 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_df43ce8600fe40232834bf84ed4021a5.setContent(html_3061862c49df8041de7f481109c65ae6);
+            
+        
+
+        circle_marker_43667bd5b416c886b061e457bfbbd0c4.bindPopup(popup_df43ce8600fe40232834bf84ed4021a5)
+        ;
+
+        
+    
+    
+            circle_marker_43667bd5b416c886b061e457bfbbd0c4.bindTooltip(
+                `<div>
+                     Aboadze Junction Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_20ad30eafbc189e4b831e9ea78092932 = L.circleMarker(
+                [11.0615, -0.2333],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_492d03242e702e0fcfbb2a2608b37d51);
+        
+    
+        var popup_f25924f333846ee8b6c5ee8d52ff8915 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_122b2b6fa8e1357c6bdb49cf3ff49fc2 = $(`<div id="html_122b2b6fa8e1357c6bdb49cf3ff49fc2" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Bawku Substation</h4>          <b>Substation ID:</b> 35<br>         <b>Region:</b> Upper East<br>         <b>Voltage:</b> 161 kV<br>         <b>Capacity:</b> 194.8 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_f25924f333846ee8b6c5ee8d52ff8915.setContent(html_122b2b6fa8e1357c6bdb49cf3ff49fc2);
+            
+        
+
+        circle_marker_20ad30eafbc189e4b831e9ea78092932.bindPopup(popup_f25924f333846ee8b6c5ee8d52ff8915)
+        ;
+
+        
+    
+    
+            circle_marker_20ad30eafbc189e4b831e9ea78092932.bindTooltip(
+                `<div>
+                     Bawku Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c4f423653bdbf54eec885697e2248333 = L.circleMarker(
+                [11.18, -4.3],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_492d03242e702e0fcfbb2a2608b37d51);
+        
+    
+        var popup_62b29ef75dd8169bc9c14c798d16ee93 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0a519d50edb70ccadcb5c336861225ce = $(`<div id="html_0a519d50edb70ccadcb5c336861225ce" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Bobo-Dioulasso Hub</h4>          <b>Substation ID:</b> 43<br>         <b>Region:</b> Burkina Faso<br>         <b>Voltage:</b> 161 kV<br>         <b>Capacity:</b> 445.9 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_62b29ef75dd8169bc9c14c798d16ee93.setContent(html_0a519d50edb70ccadcb5c336861225ce);
+            
+        
+
+        circle_marker_c4f423653bdbf54eec885697e2248333.bindPopup(popup_62b29ef75dd8169bc9c14c798d16ee93)
+        ;
+
+        
+    
+    
+            circle_marker_c4f423653bdbf54eec885697e2248333.bindTooltip(
+                `<div>
+                     Bobo-Dioulasso Hub
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b8d8e0761c07bbc56c98fa37c0fab4c2 = L.circleMarker(
+                [5.35, -4.0],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_492d03242e702e0fcfbb2a2608b37d51);
+        
+    
+        var popup_4af96b682580c40318e434650be660aa = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1da467e689ca4ec7c248cd9e737bbb7b = $(`<div id="html_1da467e689ca4ec7c248cd9e737bbb7b" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Abidjan Transmission Hub</h4>          <b>Substation ID:</b> 42<br>         <b>Region:</b> Cote d'Ivoire<br>         <b>Voltage:</b> 161 kV<br>         <b>Capacity:</b> 262.6 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_4af96b682580c40318e434650be660aa.setContent(html_1da467e689ca4ec7c248cd9e737bbb7b);
+            
+        
+
+        circle_marker_b8d8e0761c07bbc56c98fa37c0fab4c2.bindPopup(popup_4af96b682580c40318e434650be660aa)
+        ;
+
+        
+    
+    
+            circle_marker_b8d8e0761c07bbc56c98fa37c0fab4c2.bindTooltip(
+                `<div>
+                     Abidjan Transmission Hub
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_65042a9d376dba07c6f7c6118891ec74 = L.circleMarker(
+                [6.37, 2.43],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_492d03242e702e0fcfbb2a2608b37d51);
+        
+    
+        var popup_a42bdf0784cd446b84045362bc07f754 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4e326cc1ed3cc3afbebcb60ba4c1bb4f = $(`<div id="html_4e326cc1ed3cc3afbebcb60ba4c1bb4f" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Cotonou Transmission Hub</h4>          <b>Substation ID:</b> 41<br>         <b>Region:</b> Benin<br>         <b>Voltage:</b> 161 kV<br>         <b>Capacity:</b> 487.6 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_a42bdf0784cd446b84045362bc07f754.setContent(html_4e326cc1ed3cc3afbebcb60ba4c1bb4f);
+            
+        
+
+        circle_marker_65042a9d376dba07c6f7c6118891ec74.bindPopup(popup_a42bdf0784cd446b84045362bc07f754)
+        ;
+
+        
+    
+    
+            circle_marker_65042a9d376dba07c6f7c6118891ec74.bindTooltip(
+                `<div>
+                     Cotonou Transmission Hub
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_492d03242e702e0fcfbb2a2608b37d51.addTo(map_bc1e5df5d7c35616c77a9f80422013a3);
+        
+    
+            var feature_group_1f0310df80bd80dd35c314878d45ee52 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_4b67f1fabec30a9647999606ea609fac = L.circleMarker(
+                [7.0553, -1.4029],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_1f0310df80bd80dd35c314878d45ee52);
+        
+    
+        var popup_fe9a5a9c16c8b7e1be114f3d0ecb24c8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4b1b3449038668eda5a22860271f04d8 = $(`<div id="html_4b1b3449038668eda5a22860271f04d8" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Mampong Substation</h4>          <b>Substation ID:</b> 10<br>         <b>Region:</b> Ashanti<br>         <b>Voltage:</b> 69 kV<br>         <b>Capacity:</b> 189.6 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_fe9a5a9c16c8b7e1be114f3d0ecb24c8.setContent(html_4b1b3449038668eda5a22860271f04d8);
+            
+        
+
+        circle_marker_4b67f1fabec30a9647999606ea609fac.bindPopup(popup_fe9a5a9c16c8b7e1be114f3d0ecb24c8)
+        ;
+
+        
+    
+    
+            circle_marker_4b67f1fabec30a9647999606ea609fac.bindTooltip(
+                `<div>
+                     Mampong Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4e27b7d899d7015e23c1bb4cac1e6ed1 = L.circleMarker(
+                [5.3093, -1.9927],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_1f0310df80bd80dd35c314878d45ee52);
+        
+    
+        var popup_d473b90e65c6026b1b338df0369d8b9d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1106c75cd150bc608f7979ad088eba12 = $(`<div id="html_1106c75cd150bc608f7979ad088eba12" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Tarkwa Substation</h4>          <b>Substation ID:</b> 14<br>         <b>Region:</b> Western<br>         <b>Voltage:</b> 69 kV<br>         <b>Capacity:</b> 169.4 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_d473b90e65c6026b1b338df0369d8b9d.setContent(html_1106c75cd150bc608f7979ad088eba12);
+            
+        
+
+        circle_marker_4e27b7d899d7015e23c1bb4cac1e6ed1.bindPopup(popup_d473b90e65c6026b1b338df0369d8b9d)
+        ;
+
+        
+    
+    
+            circle_marker_4e27b7d899d7015e23c1bb4cac1e6ed1.bindTooltip(
+                `<div>
+                     Tarkwa Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_15ba29f3d0615709c26a8e867e4f4cf2 = L.circleMarker(
+                [5.1068, -1.2411],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_1f0310df80bd80dd35c314878d45ee52);
+        
+    
+        var popup_0e3dd08a42af61ca128a17c26056a236 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_68a68912a6a26f90a78c279fa88dbf8a = $(`<div id="html_68a68912a6a26f90a78c279fa88dbf8a" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Cape Coast Substation</h4>          <b>Substation ID:</b> 16<br>         <b>Region:</b> Central<br>         <b>Voltage:</b> 69 kV<br>         <b>Capacity:</b> 68.8 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_0e3dd08a42af61ca128a17c26056a236.setContent(html_68a68912a6a26f90a78c279fa88dbf8a);
+            
+        
+
+        circle_marker_15ba29f3d0615709c26a8e867e4f4cf2.bindPopup(popup_0e3dd08a42af61ca128a17c26056a236)
+        ;
+
+        
+    
+    
+            circle_marker_15ba29f3d0615709c26a8e867e4f4cf2.bindTooltip(
+                `<div>
+                     Cape Coast Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2e62918fd77409665a53ac760d00482b = L.circleMarker(
+                [6.2991, 0.0641],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_1f0310df80bd80dd35c314878d45ee52);
+        
+    
+        var popup_897f9da31e331cec49d65af3d9de202e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3be6c99b9f08bc842a9b3b5e0d1dda5f = $(`<div id="html_3be6c99b9f08bc842a9b3b5e0d1dda5f" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Akosombo Substation</h4>          <b>Substation ID:</b> 21<br>         <b>Region:</b> Eastern<br>         <b>Voltage:</b> 69 kV<br>         <b>Capacity:</b> 57.9 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_897f9da31e331cec49d65af3d9de202e.setContent(html_3be6c99b9f08bc842a9b3b5e0d1dda5f);
+            
+        
+
+        circle_marker_2e62918fd77409665a53ac760d00482b.bindPopup(popup_897f9da31e331cec49d65af3d9de202e)
+        ;
+
+        
+    
+    
+            circle_marker_2e62918fd77409665a53ac760d00482b.bindTooltip(
+                `<div>
+                     Akosombo Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_00b1e73199453c585b1a1ce94896b423 = L.circleMarker(
+                [6.5502, -0.7749],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_1f0310df80bd80dd35c314878d45ee52);
+        
+    
+        var popup_763b4efb2efdc351eff92290cb6b6aa8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7964b564dcf9221f06d7c2cb9f7704b2 = $(`<div id="html_7964b564dcf9221f06d7c2cb9f7704b2" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Nkawkaw Substation</h4>          <b>Substation ID:</b> 22<br>         <b>Region:</b> Eastern<br>         <b>Voltage:</b> 69 kV<br>         <b>Capacity:</b> 389.2 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_763b4efb2efdc351eff92290cb6b6aa8.setContent(html_7964b564dcf9221f06d7c2cb9f7704b2);
+            
+        
+
+        circle_marker_00b1e73199453c585b1a1ce94896b423.bindPopup(popup_763b4efb2efdc351eff92290cb6b6aa8)
+        ;
+
+        
+    
+    
+            circle_marker_00b1e73199453c585b1a1ce94896b423.bindTooltip(
+                `<div>
+                     Nkawkaw Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b999165b4f01db18677b37e8852bc64b = L.circleMarker(
+                [6.6094, -1.2163],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_1f0310df80bd80dd35c314878d45ee52);
+        
+    
+        var popup_d63b4f4cd803a6940c57fbe45a82b7cb = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_dbf614a37311d4df304fb18bb3829c38 = $(`<div id="html_dbf614a37311d4df304fb18bb3829c38" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Konongo Substation</h4>          <b>Substation ID:</b> 11<br>         <b>Region:</b> Ashanti<br>         <b>Voltage:</b> 69 kV<br>         <b>Capacity:</b> 285.2 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_d63b4f4cd803a6940c57fbe45a82b7cb.setContent(html_dbf614a37311d4df304fb18bb3829c38);
+            
+        
+
+        circle_marker_b999165b4f01db18677b37e8852bc64b.bindPopup(popup_d63b4f4cd803a6940c57fbe45a82b7cb)
+        ;
+
+        
+    
+    
+            circle_marker_b999165b4f01db18677b37e8852bc64b.bindTooltip(
+                `<div>
+                     Konongo Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2f385e6b1c3765e7b062d72726187afc = L.circleMarker(
+                [4.8747, -2.2381],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_1f0310df80bd80dd35c314878d45ee52);
+        
+    
+        var popup_7e725dd442192396b0b9d36b60cc040e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4391563a54123f28207c84a1808abecf = $(`<div id="html_4391563a54123f28207c84a1808abecf" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Axim Substation</h4>          <b>Substation ID:</b> 15<br>         <b>Region:</b> Western<br>         <b>Voltage:</b> 69 kV<br>         <b>Capacity:</b> 96.9 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_7e725dd442192396b0b9d36b60cc040e.setContent(html_4391563a54123f28207c84a1808abecf);
+            
+        
+
+        circle_marker_2f385e6b1c3765e7b062d72726187afc.bindPopup(popup_7e725dd442192396b0b9d36b60cc040e)
+        ;
+
+        
+    
+    
+            circle_marker_2f385e6b1c3765e7b062d72726187afc.bindTooltip(
+                `<div>
+                     Axim Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_97e74738f7597858d3e14bbac8ad4156 = L.circleMarker(
+                [6.035, -0.4535],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_1f0310df80bd80dd35c314878d45ee52);
+        
+    
+        var popup_79a65d2a2b40b2ae57e136ec1553c4c4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4800b0c92652a6426a974f67d63b6452 = $(`<div id="html_4800b0c92652a6426a974f67d63b6452" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Suhum Substation</h4>          <b>Substation ID:</b> 23<br>         <b>Region:</b> Eastern<br>         <b>Voltage:</b> 69 kV<br>         <b>Capacity:</b> 339.0 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_79a65d2a2b40b2ae57e136ec1553c4c4.setContent(html_4800b0c92652a6426a974f67d63b6452);
+            
+        
+
+        circle_marker_97e74738f7597858d3e14bbac8ad4156.bindPopup(popup_79a65d2a2b40b2ae57e136ec1553c4c4)
+        ;
+
+        
+    
+    
+            circle_marker_97e74738f7597858d3e14bbac8ad4156.bindTooltip(
+                `<div>
+                     Suhum Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_1f0310df80bd80dd35c314878d45ee52.addTo(map_bc1e5df5d7c35616c77a9f80422013a3);
+        
+    
+            var feature_group_5462dc4eb4df06317f723e7e406b99e5 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_c67f5c0dcee60c518cf39af8714a0ee5 = L.circleMarker(
+                [5.6085, -0.2193],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_5462dc4eb4df06317f723e7e406b99e5);
+        
+    
+        var popup_4cc75ab778d97d1d355ed2e584718229 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e53d1e2009bb2c8e42beb82a266959a5 = $(`<div id="html_e53d1e2009bb2c8e42beb82a266959a5" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Achimota Substation</h4>          <b>Substation ID:</b> 1<br>         <b>Region:</b> Greater Accra<br>         <b>Voltage:</b> 11 kV<br>         <b>Capacity:</b> 6.4 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_4cc75ab778d97d1d355ed2e584718229.setContent(html_e53d1e2009bb2c8e42beb82a266959a5);
+            
+        
+
+        circle_marker_c67f5c0dcee60c518cf39af8714a0ee5.bindPopup(popup_4cc75ab778d97d1d355ed2e584718229)
+        ;
+
+        
+    
+    
+            circle_marker_c67f5c0dcee60c518cf39af8714a0ee5.bindTooltip(
+                `<div>
+                     Achimota Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5e3735858fd6e9be39bc019e2984089d = L.circleMarker(
+                [6.2091, -1.6557],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_5462dc4eb4df06317f723e7e406b99e5);
+        
+    
+        var popup_6e1eaf62094fbf6f582f63e24822a937 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8bc8269060364e68f34db13af52fa7ce = $(`<div id="html_8bc8269060364e68f34db13af52fa7ce" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Obuasi Substation</h4>          <b>Substation ID:</b> 9<br>         <b>Region:</b> Ashanti<br>         <b>Voltage:</b> 33 kV<br>         <b>Capacity:</b> 47.5 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_6e1eaf62094fbf6f582f63e24822a937.setContent(html_8bc8269060364e68f34db13af52fa7ce);
+            
+        
+
+        circle_marker_5e3735858fd6e9be39bc019e2984089d.bindPopup(popup_6e1eaf62094fbf6f582f63e24822a937)
+        ;
+
+        
+    
+    
+            circle_marker_5e3735858fd6e9be39bc019e2984089d.bindTooltip(
+                `<div>
+                     Obuasi Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_19441162ed4b5dab01e4a90e6d4ca2f8 = L.circleMarker(
+                [4.9048, -1.7562],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_5462dc4eb4df06317f723e7e406b99e5);
+        
+    
+        var popup_f5684c73d561bba1ec21a95726611929 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b451be8b16db26cf5fd0ded0069349ba = $(`<div id="html_b451be8b16db26cf5fd0ded0069349ba" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Takoradi Substation</h4>          <b>Substation ID:</b> 12<br>         <b>Region:</b> Western<br>         <b>Voltage:</b> 33 kV<br>         <b>Capacity:</b> 14.0 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_f5684c73d561bba1ec21a95726611929.setContent(html_b451be8b16db26cf5fd0ded0069349ba);
+            
+        
+
+        circle_marker_19441162ed4b5dab01e4a90e6d4ca2f8.bindPopup(popup_f5684c73d561bba1ec21a95726611929)
+        ;
+
+        
+    
+    
+            circle_marker_19441162ed4b5dab01e4a90e6d4ca2f8.bindTooltip(
+                `<div>
+                     Takoradi Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c6e6581f751e2c5a22f7e202ae85d4ea = L.circleMarker(
+                [4.9905, -1.7714],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_5462dc4eb4df06317f723e7e406b99e5);
+        
+    
+        var popup_4d1ad4160afaf8de20e8e30d11d64713 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d9f98366c3518519384a4dafcee683e2 = $(`<div id="html_d9f98366c3518519384a4dafcee683e2" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Aboadze Substation</h4>          <b>Substation ID:</b> 13<br>         <b>Region:</b> Western<br>         <b>Voltage:</b> 33 kV<br>         <b>Capacity:</b> 42.7 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_4d1ad4160afaf8de20e8e30d11d64713.setContent(html_d9f98366c3518519384a4dafcee683e2);
+            
+        
+
+        circle_marker_c6e6581f751e2c5a22f7e202ae85d4ea.bindPopup(popup_4d1ad4160afaf8de20e8e30d11d64713)
+        ;
+
+        
+    
+    
+            circle_marker_c6e6581f751e2c5a22f7e202ae85d4ea.bindTooltip(
+                `<div>
+                     Aboadze Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3ceaa57796c217b218691e9dcc91f57e = L.circleMarker(
+                [5.5262, -0.4124],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_5462dc4eb4df06317f723e7e406b99e5);
+        
+    
+        var popup_f9fe7767ba0f1c451de4a9f2f4842de7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8faed8437b0a0f4dc2de409559d2db5a = $(`<div id="html_8faed8437b0a0f4dc2de409559d2db5a" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Kasoa Substation</h4>          <b>Substation ID:</b> 18<br>         <b>Region:</b> Central<br>         <b>Voltage:</b> 11 kV<br>         <b>Capacity:</b> 52.4 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_f9fe7767ba0f1c451de4a9f2f4842de7.setContent(html_8faed8437b0a0f4dc2de409559d2db5a);
+            
+        
+
+        circle_marker_3ceaa57796c217b218691e9dcc91f57e.bindPopup(popup_f9fe7767ba0f1c451de4a9f2f4842de7)
+        ;
+
+        
+    
+    
+            circle_marker_3ceaa57796c217b218691e9dcc91f57e.bindTooltip(
+                `<div>
+                     Kasoa Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_518afa38d40352e1ddff86c8489bb6b6 = L.circleMarker(
+                [6.1017, -0.254],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_5462dc4eb4df06317f723e7e406b99e5);
+        
+    
+        var popup_9972c2147b26d2b007fb4074a243827f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_790122d953b104ca52eed864537f1275 = $(`<div id="html_790122d953b104ca52eed864537f1275" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Koforidua Substation</h4>          <b>Substation ID:</b> 20<br>         <b>Region:</b> Eastern<br>         <b>Voltage:</b> 11 kV<br>         <b>Capacity:</b> 42.4 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_9972c2147b26d2b007fb4074a243827f.setContent(html_790122d953b104ca52eed864537f1275);
+            
+        
+
+        circle_marker_518afa38d40352e1ddff86c8489bb6b6.bindPopup(popup_9972c2147b26d2b007fb4074a243827f)
+        ;
+
+        
+    
+    
+            circle_marker_518afa38d40352e1ddff86c8489bb6b6.bindTooltip(
+                `<div>
+                     Koforidua Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d47acac67b8f942158969ed83a7553af = L.circleMarker(
+                [6.1597, 0.1061],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_5462dc4eb4df06317f723e7e406b99e5);
+        
+    
+        var popup_d1c46498617fc178a5a0aae63d5ef058 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_493da7c3e8ad2b9378a8853e449c1527 = $(`<div id="html_493da7c3e8ad2b9378a8853e449c1527" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Kpong Substation</h4>          <b>Substation ID:</b> 25<br>         <b>Region:</b> Volta<br>         <b>Voltage:</b> 11 kV<br>         <b>Capacity:</b> 11.2 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_d1c46498617fc178a5a0aae63d5ef058.setContent(html_493da7c3e8ad2b9378a8853e449c1527);
+            
+        
+
+        circle_marker_d47acac67b8f942158969ed83a7553af.bindPopup(popup_d1c46498617fc178a5a0aae63d5ef058)
+        ;
+
+        
+    
+    
+            circle_marker_d47acac67b8f942158969ed83a7553af.bindTooltip(
+                `<div>
+                     Kpong Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_885e96ed9ff3ff5fc7f2427a6edd5294 = L.circleMarker(
+                [7.1436, 0.4766],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_5462dc4eb4df06317f723e7e406b99e5);
+        
+    
+        var popup_604d082b675cfe466fca846854731375 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4af43cd3998357eeb91cb6eff153004b = $(`<div id="html_4af43cd3998357eeb91cb6eff153004b" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Hohoe Substation</h4>          <b>Substation ID:</b> 26<br>         <b>Region:</b> Volta<br>         <b>Voltage:</b> 11 kV<br>         <b>Capacity:</b> 18.2 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_604d082b675cfe466fca846854731375.setContent(html_4af43cd3998357eeb91cb6eff153004b);
+            
+        
+
+        circle_marker_885e96ed9ff3ff5fc7f2427a6edd5294.bindPopup(popup_604d082b675cfe466fca846854731375)
+        ;
+
+        
+    
+    
+            circle_marker_885e96ed9ff3ff5fc7f2427a6edd5294.bindTooltip(
+                `<div>
+                     Hohoe Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3e2e756522a1bec3beecb91243dfc986 = L.circleMarker(
+                [7.3375, -2.3318],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_5462dc4eb4df06317f723e7e406b99e5);
+        
+    
+        var popup_b53b9d4b92587aac3fad4eae59193a2c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cb7f9e4ea5227df18f66e6d7da4488af = $(`<div id="html_cb7f9e4ea5227df18f66e6d7da4488af" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Sunyani Substation</h4>          <b>Substation ID:</b> 28<br>         <b>Region:</b> Bono<br>         <b>Voltage:</b> 33 kV<br>         <b>Capacity:</b> 19.6 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_b53b9d4b92587aac3fad4eae59193a2c.setContent(html_cb7f9e4ea5227df18f66e6d7da4488af);
+            
+        
+
+        circle_marker_3e2e756522a1bec3beecb91243dfc986.bindPopup(popup_b53b9d4b92587aac3fad4eae59193a2c)
+        ;
+
+        
+    
+    
+            circle_marker_3e2e756522a1bec3beecb91243dfc986.bindTooltip(
+                `<div>
+                     Sunyani Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2b3b0341b58229c85be30e0886a2608f = L.circleMarker(
+                [7.5934, -1.9405],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_5462dc4eb4df06317f723e7e406b99e5);
+        
+    
+        var popup_a773a20bf1501493ce938296a14fd4a7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1187f4bf5c3c6dcdfd5f2895ce88f4ad = $(`<div id="html_1187f4bf5c3c6dcdfd5f2895ce88f4ad" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Techiman Substation</h4>          <b>Substation ID:</b> 29<br>         <b>Region:</b> Bono<br>         <b>Voltage:</b> 33 kV<br>         <b>Capacity:</b> 44.2 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_a773a20bf1501493ce938296a14fd4a7.setContent(html_1187f4bf5c3c6dcdfd5f2895ce88f4ad);
+            
+        
+
+        circle_marker_2b3b0341b58229c85be30e0886a2608f.bindPopup(popup_a773a20bf1501493ce938296a14fd4a7)
+        ;
+
+        
+    
+    
+            circle_marker_2b3b0341b58229c85be30e0886a2608f.bindTooltip(
+                `<div>
+                     Techiman Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_be0df000351c3f8d6f97a2b740d5962b = L.circleMarker(
+                [9.4072, -0.8508],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_5462dc4eb4df06317f723e7e406b99e5);
+        
+    
+        var popup_75252b7db4fc995c329355d955d8b353 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8925143028b6af4b2996cfb68ce3312c = $(`<div id="html_8925143028b6af4b2996cfb68ce3312c" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Tamale Substation</h4>          <b>Substation ID:</b> 31<br>         <b>Region:</b> Northern<br>         <b>Voltage:</b> 33 kV<br>         <b>Capacity:</b> 37.4 MVA<br>         <b>Status:</b> Inactive<br>     </div>     </div>`)[0];
+                popup_75252b7db4fc995c329355d955d8b353.setContent(html_8925143028b6af4b2996cfb68ce3312c);
+            
+        
+
+        circle_marker_be0df000351c3f8d6f97a2b740d5962b.bindPopup(popup_75252b7db4fc995c329355d955d8b353)
+        ;
+
+        
+    
+    
+            circle_marker_be0df000351c3f8d6f97a2b740d5962b.bindTooltip(
+                `<div>
+                     Tamale Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7ecc0d1f90b2ffedd9a0eb339a74440c = L.circleMarker(
+                [5.6984, -1.497],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_5462dc4eb4df06317f723e7e406b99e5);
+        
+    
+        var popup_69873897305c143243b71df86229e460 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2415709d11bd30a2a33f0456b3c3c2cc = $(`<div id="html_2415709d11bd30a2a33f0456b3c3c2cc" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Assin Fosu Substation</h4>          <b>Substation ID:</b> 19<br>         <b>Region:</b> Central<br>         <b>Voltage:</b> 11 kV<br>         <b>Capacity:</b> 26.2 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_69873897305c143243b71df86229e460.setContent(html_2415709d11bd30a2a33f0456b3c3c2cc);
+            
+        
+
+        circle_marker_7ecc0d1f90b2ffedd9a0eb339a74440c.bindPopup(popup_69873897305c143243b71df86229e460)
+        ;
+
+        
+    
+    
+            circle_marker_7ecc0d1f90b2ffedd9a0eb339a74440c.bindTooltip(
+                `<div>
+                     Assin Fosu Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7f82eb89152b86c13b9a2b7d8e2287d1 = L.circleMarker(
+                [5.9995, 0.5762],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_5462dc4eb4df06317f723e7e406b99e5);
+        
+    
+        var popup_52a45e822673e1ecdf352c6cc24a539f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b526fba293ea9af937e58b8fa6874574 = $(`<div id="html_b526fba293ea9af937e58b8fa6874574" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Sogakope Substation</h4>          <b>Substation ID:</b> 27<br>         <b>Region:</b> Volta<br>         <b>Voltage:</b> 11 kV<br>         <b>Capacity:</b> 58.8 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_52a45e822673e1ecdf352c6cc24a539f.setContent(html_b526fba293ea9af937e58b8fa6874574);
+            
+        
+
+        circle_marker_7f82eb89152b86c13b9a2b7d8e2287d1.bindPopup(popup_52a45e822673e1ecdf352c6cc24a539f)
+        ;
+
+        
+    
+    
+            circle_marker_7f82eb89152b86c13b9a2b7d8e2287d1.bindTooltip(
+                `<div>
+                     Sogakope Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7f2b2671293dcff4a35375d6390af26f = L.circleMarker(
+                [9.4368, -0.0076],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_5462dc4eb4df06317f723e7e406b99e5);
+        
+    
+        var popup_7f0032dd83567f55bd79a8b9b62320a2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2ac889bb625d3c3208563736ad7805e5 = $(`<div id="html_2ac889bb625d3c3208563736ad7805e5" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Yendi Substation</h4>          <b>Substation ID:</b> 32<br>         <b>Region:</b> Northern<br>         <b>Voltage:</b> 11 kV<br>         <b>Capacity:</b> 52.3 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_7f0032dd83567f55bd79a8b9b62320a2.setContent(html_2ac889bb625d3c3208563736ad7805e5);
+            
+        
+
+        circle_marker_7f2b2671293dcff4a35375d6390af26f.bindPopup(popup_7f0032dd83567f55bd79a8b9b62320a2)
+        ;
+
+        
+    
+    
+            circle_marker_7f2b2671293dcff4a35375d6390af26f.bindTooltip(
+                `<div>
+                     Yendi Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d37dceb9db228870825973934ce9ff49 = L.circleMarker(
+                [10.0682, -2.506],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_5462dc4eb4df06317f723e7e406b99e5);
+        
+    
+        var popup_fc28311976e9c73cec722d8e10dfec16 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_12e74505580ce6796512b19ad3ad1bca = $(`<div id="html_12e74505580ce6796512b19ad3ad1bca" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Wa Substation</h4>          <b>Substation ID:</b> 36<br>         <b>Region:</b> Upper West<br>         <b>Voltage:</b> 11 kV<br>         <b>Capacity:</b> 27.1 MVA<br>         <b>Status:</b> Active<br>     </div>     </div>`)[0];
+                popup_fc28311976e9c73cec722d8e10dfec16.setContent(html_12e74505580ce6796512b19ad3ad1bca);
+            
+        
+
+        circle_marker_d37dceb9db228870825973934ce9ff49.bindPopup(popup_fc28311976e9c73cec722d8e10dfec16)
+        ;
+
+        
+    
+    
+            circle_marker_d37dceb9db228870825973934ce9ff49.bindTooltip(
+                `<div>
+                     Wa Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_5462dc4eb4df06317f723e7e406b99e5.addTo(map_bc1e5df5d7c35616c77a9f80422013a3);
+        
+    
+            var feature_group_99e2b1d29075d31307af3bb361d3b25d = L.featureGroup(
+                {
+}
+            );
+        
+    
+            feature_group_99e2b1d29075d31307af3bb361d3b25d.addTo(map_bc1e5df5d7c35616c77a9f80422013a3);
+        
+    
+            var feature_group_6d521d2c98ca7d06ad1800e143373613 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var poly_line_f17c960dab81e36f14a12bcbe7b93ae1 = L.polyline(
+                [[5.6085, -0.2193], [5.6596, -0.0226]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_d622441f7f501e5dc326c6379cf92339 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d93f2f74359f05f08a49f0b5e3166a13 = $(`<div id="html_d93f2f74359f05f08a49f0b5e3166a13" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 1<br>         <b>From:</b> Achimota Substation<br>         <b>To:</b> Tema Substation<br>         <b>Voltage:</b> 11 kV<br>         <b>Length:</b> 25.2 km<br>         <b>Capacity:</b> 215.0 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Underground<br>     </div>     </div>`)[0];
+                popup_d622441f7f501e5dc326c6379cf92339.setContent(html_d93f2f74359f05f08a49f0b5e3166a13);
+            
+        
+
+        poly_line_f17c960dab81e36f14a12bcbe7b93ae1.bindPopup(popup_d622441f7f501e5dc326c6379cf92339)
+        ;
+
+        
+    
+    
+            poly_line_f17c960dab81e36f14a12bcbe7b93ae1.bindTooltip(
+                `<div>
+                     Achimota Substation → Tema Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_575a08f7e906c1a754bdf53bc899f896 = L.polyline(
+                [[5.6085, -0.2193], [5.563, -0.2971]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_38888fee0de6f7b17c9d40fa84051959 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a8597eea821b8e5e5908db5d8e197399 = $(`<div id="html_a8597eea821b8e5e5908db5d8e197399" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 2<br>         <b>From:</b> Achimota Substation<br>         <b>To:</b> Mallam Substation<br>         <b>Voltage:</b> 11 kV<br>         <b>Length:</b> 11.0 km<br>         <b>Capacity:</b> 36.4 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_38888fee0de6f7b17c9d40fa84051959.setContent(html_a8597eea821b8e5e5908db5d8e197399);
+            
+        
+
+        poly_line_575a08f7e906c1a754bdf53bc899f896.bindPopup(popup_38888fee0de6f7b17c9d40fa84051959)
+        ;
+
+        
+    
+    
+            poly_line_575a08f7e906c1a754bdf53bc899f896.bindTooltip(
+                `<div>
+                     Achimota Substation → Mallam Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_539853b3e04d49219f1574056cc7c637 = L.polyline(
+                [[5.6085, -0.2193], [5.5691, -0.2413]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_da85785f7c88b9db05b207d71337a884 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f271ebccff6d7ebe910978cdf035a995 = $(`<div id="html_f271ebccff6d7ebe910978cdf035a995" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 3<br>         <b>From:</b> Achimota Substation<br>         <b>To:</b> Kaneshie Substation<br>         <b>Voltage:</b> 11 kV<br>         <b>Length:</b> 5.9 km<br>         <b>Capacity:</b> 277.4 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_da85785f7c88b9db05b207d71337a884.setContent(html_f271ebccff6d7ebe910978cdf035a995);
+            
+        
+
+        poly_line_539853b3e04d49219f1574056cc7c637.bindPopup(popup_da85785f7c88b9db05b207d71337a884)
+        ;
+
+        
+    
+    
+            poly_line_539853b3e04d49219f1574056cc7c637.bindTooltip(
+                `<div>
+                     Achimota Substation → Kaneshie Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_58ed03bf1ff9aa398c91348af58568d3 = L.polyline(
+                [[5.6596, -0.0226], [5.563, -0.2971]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_59f8c068936386890a6119ae7d55dd43 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b1dcde946079e7337d64e5e2c06a74c1 = $(`<div id="html_b1dcde946079e7337d64e5e2c06a74c1" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 4<br>         <b>From:</b> Tema Substation<br>         <b>To:</b> Mallam Substation<br>         <b>Voltage:</b> 330 kV<br>         <b>Length:</b> 34.4 km<br>         <b>Capacity:</b> 39.0 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Underground<br>     </div>     </div>`)[0];
+                popup_59f8c068936386890a6119ae7d55dd43.setContent(html_b1dcde946079e7337d64e5e2c06a74c1);
+            
+        
+
+        poly_line_58ed03bf1ff9aa398c91348af58568d3.bindPopup(popup_59f8c068936386890a6119ae7d55dd43)
+        ;
+
+        
+    
+    
+            poly_line_58ed03bf1ff9aa398c91348af58568d3.bindTooltip(
+                `<div>
+                     Tema Substation → Mallam Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_5feaa77a0ac26d28e842df171bed8450 = L.polyline(
+                [[5.6596, -0.0226], [5.6401, -0.1799]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_e6894d058d2e014c0717e3e597f034cf = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4ade1eefce47eb8616f9328f833122de = $(`<div id="html_4ade1eefce47eb8616f9328f833122de" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 5<br>         <b>From:</b> Tema Substation<br>         <b>To:</b> Legon Substation<br>         <b>Voltage:</b> 161 kV<br>         <b>Length:</b> 19.5 km<br>         <b>Capacity:</b> 186.5 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Underground<br>     </div>     </div>`)[0];
+                popup_e6894d058d2e014c0717e3e597f034cf.setContent(html_4ade1eefce47eb8616f9328f833122de);
+            
+        
+
+        poly_line_5feaa77a0ac26d28e842df171bed8450.bindPopup(popup_e6894d058d2e014c0717e3e597f034cf)
+        ;
+
+        
+    
+    
+            poly_line_5feaa77a0ac26d28e842df171bed8450.bindTooltip(
+                `<div>
+                     Tema Substation → Legon Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_1e2ea583568bf9f06aae1223d1bebdc3 = L.polyline(
+                [[5.563, -0.2971], [5.6401, -0.1799]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_067cd3f341f9f0a2f8203c3356792fe6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bd640c16e748b712f3ff17adbb2956f4 = $(`<div id="html_bd640c16e748b712f3ff17adbb2956f4" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 6<br>         <b>From:</b> Mallam Substation<br>         <b>To:</b> Legon Substation<br>         <b>Voltage:</b> 161 kV<br>         <b>Length:</b> 17.1 km<br>         <b>Capacity:</b> 220.5 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Underground<br>     </div>     </div>`)[0];
+                popup_067cd3f341f9f0a2f8203c3356792fe6.setContent(html_bd640c16e748b712f3ff17adbb2956f4);
+            
+        
+
+        poly_line_1e2ea583568bf9f06aae1223d1bebdc3.bindPopup(popup_067cd3f341f9f0a2f8203c3356792fe6)
+        ;
+
+        
+    
+    
+            poly_line_1e2ea583568bf9f06aae1223d1bebdc3.bindTooltip(
+                `<div>
+                     Mallam Substation → Legon Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_ae0163d2e8775deec5b97801b7a3ff27 = L.polyline(
+                [[5.563, -0.2971], [5.5691, -0.2413]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_5ab6f16c4b54c3c4a7c2454b63e10ac1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_182716eade565ca9dccf4973003ad2d8 = $(`<div id="html_182716eade565ca9dccf4973003ad2d8" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 7<br>         <b>From:</b> Mallam Substation<br>         <b>To:</b> Kaneshie Substation<br>         <b>Voltage:</b> 161 kV<br>         <b>Length:</b> 7.0 km<br>         <b>Capacity:</b> 108.5 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_5ab6f16c4b54c3c4a7c2454b63e10ac1.setContent(html_182716eade565ca9dccf4973003ad2d8);
+            
+        
+
+        poly_line_ae0163d2e8775deec5b97801b7a3ff27.bindPopup(popup_5ab6f16c4b54c3c4a7c2454b63e10ac1)
+        ;
+
+        
+    
+    
+            poly_line_ae0163d2e8775deec5b97801b7a3ff27.bindTooltip(
+                `<div>
+                     Mallam Substation → Kaneshie Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_839eab1a18e3ef8f0665d76298c92029 = L.polyline(
+                [[5.563, -0.2971], [5.5921, -0.1439]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_9ad4a1ac6d4f67e425c0d8fb5e664e04 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_862fb03b4f972078d2ed470cfa3b7eb6 = $(`<div id="html_862fb03b4f972078d2ed470cfa3b7eb6" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 8<br>         <b>From:</b> Mallam Substation<br>         <b>To:</b> Aboadze Junction Substation<br>         <b>Voltage:</b> 161 kV<br>         <b>Length:</b> 22.4 km<br>         <b>Capacity:</b> 298.9 MVA<br>         <b>Status:</b> Under Maintenance<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_9ad4a1ac6d4f67e425c0d8fb5e664e04.setContent(html_862fb03b4f972078d2ed470cfa3b7eb6);
+            
+        
+
+        poly_line_839eab1a18e3ef8f0665d76298c92029.bindPopup(popup_9ad4a1ac6d4f67e425c0d8fb5e664e04)
+        ;
+
+        
+    
+    
+            poly_line_839eab1a18e3ef8f0665d76298c92029.bindTooltip(
+                `<div>
+                     Mallam Substation → Aboadze Junction Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_71b5afa036358cb3be9d9ca0906eef94 = L.polyline(
+                [[5.6401, -0.1799], [5.5691, -0.2413]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_bd744aa10bfa21d3c282515785e685d4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5156a60a539756c8446cd8dd6b928d30 = $(`<div id="html_5156a60a539756c8446cd8dd6b928d30" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 9<br>         <b>From:</b> Legon Substation<br>         <b>To:</b> Kaneshie Substation<br>         <b>Voltage:</b> 161 kV<br>         <b>Length:</b> 13.4 km<br>         <b>Capacity:</b> 266.6 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Underground<br>     </div>     </div>`)[0];
+                popup_bd744aa10bfa21d3c282515785e685d4.setContent(html_5156a60a539756c8446cd8dd6b928d30);
+            
+        
+
+        poly_line_71b5afa036358cb3be9d9ca0906eef94.bindPopup(popup_bd744aa10bfa21d3c282515785e685d4)
+        ;
+
+        
+    
+    
+            poly_line_71b5afa036358cb3be9d9ca0906eef94.bindTooltip(
+                `<div>
+                     Legon Substation → Kaneshie Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_b505f6aa4cab5c4378d19eeaf9b8e525 = L.polyline(
+                [[5.6401, -0.1799], [5.5921, -0.1439]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_15e389348c8488b12496a969c6819768 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e27c9723cdeca765592a1cf7333cacd5 = $(`<div id="html_e27c9723cdeca765592a1cf7333cacd5" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 10<br>         <b>From:</b> Legon Substation<br>         <b>To:</b> Aboadze Junction Substation<br>         <b>Voltage:</b> 161 kV<br>         <b>Length:</b> 8.4 km<br>         <b>Capacity:</b> 217.0 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_15e389348c8488b12496a969c6819768.setContent(html_e27c9723cdeca765592a1cf7333cacd5);
+            
+        
+
+        poly_line_b505f6aa4cab5c4378d19eeaf9b8e525.bindPopup(popup_15e389348c8488b12496a969c6819768)
+        ;
+
+        
+    
+    
+            poly_line_b505f6aa4cab5c4378d19eeaf9b8e525.bindTooltip(
+                `<div>
+                     Legon Substation → Aboadze Junction Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_17451677705b9c058f3f00a1ee1fdab0 = L.polyline(
+                [[6.6856, -1.623], [7.0553, -1.4029]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_9ed09ab5121b3b67f29a19d5a12d4de4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_47a2dce5d8c27bfd139ab21b41deac6d = $(`<div id="html_47a2dce5d8c27bfd139ab21b41deac6d" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 11<br>         <b>From:</b> Kumasi Central Substation<br>         <b>To:</b> Mampong Substation<br>         <b>Voltage:</b> 69 kV<br>         <b>Length:</b> 53.3 km<br>         <b>Capacity:</b> 269.1 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_9ed09ab5121b3b67f29a19d5a12d4de4.setContent(html_47a2dce5d8c27bfd139ab21b41deac6d);
+            
+        
+
+        poly_line_17451677705b9c058f3f00a1ee1fdab0.bindPopup(popup_9ed09ab5121b3b67f29a19d5a12d4de4)
+        ;
+
+        
+    
+    
+            poly_line_17451677705b9c058f3f00a1ee1fdab0.bindTooltip(
+                `<div>
+                     Kumasi Central Substation → Mampong Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_43cfe78050339b41dcf27302ff17d980 = L.polyline(
+                [[6.6856, -1.623], [6.6094, -1.2163]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_4424a42f5e90857ba600453948ba4f49 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_199ba06716d6251d4b97248075de5990 = $(`<div id="html_199ba06716d6251d4b97248075de5990" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 12<br>         <b>From:</b> Kumasi Central Substation<br>         <b>To:</b> Konongo Substation<br>         <b>Voltage:</b> 69 kV<br>         <b>Length:</b> 50.4 km<br>         <b>Capacity:</b> 116.0 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Underground<br>     </div>     </div>`)[0];
+                popup_4424a42f5e90857ba600453948ba4f49.setContent(html_199ba06716d6251d4b97248075de5990);
+            
+        
+
+        poly_line_43cfe78050339b41dcf27302ff17d980.bindPopup(popup_4424a42f5e90857ba600453948ba4f49)
+        ;
+
+        
+    
+    
+            poly_line_43cfe78050339b41dcf27302ff17d980.bindTooltip(
+                `<div>
+                     Kumasi Central Substation → Konongo Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_79dc96a8bb77410187d5752edf03c7cc = L.polyline(
+                [[6.7128, -1.4716], [6.2091, -1.6557]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_422fd596adbea321b2659b2576ef839a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2a196c9034a4eb2b32d9023589816360 = $(`<div id="html_2a196c9034a4eb2b32d9023589816360" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 13<br>         <b>From:</b> Ejisu Substation<br>         <b>To:</b> Obuasi Substation<br>         <b>Voltage:</b> 33 kV<br>         <b>Length:</b> 76.1 km<br>         <b>Capacity:</b> 256.9 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Underground<br>     </div>     </div>`)[0];
+                popup_422fd596adbea321b2659b2576ef839a.setContent(html_2a196c9034a4eb2b32d9023589816360);
+            
+        
+
+        poly_line_79dc96a8bb77410187d5752edf03c7cc.bindPopup(popup_422fd596adbea321b2659b2576ef839a)
+        ;
+
+        
+    
+    
+            poly_line_79dc96a8bb77410187d5752edf03c7cc.bindTooltip(
+                `<div>
+                     Ejisu Substation → Obuasi Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_2e8fbed00618a64e3f0797d7a83433c4 = L.polyline(
+                [[6.7128, -1.4716], [6.6094, -1.2163]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_cd1c1ad39a2945190a8bae6e280eb47b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b380a29d9eca7e8edc820f548400ce1b = $(`<div id="html_b380a29d9eca7e8edc820f548400ce1b" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 14<br>         <b>From:</b> Ejisu Substation<br>         <b>To:</b> Konongo Substation<br>         <b>Voltage:</b> 69 kV<br>         <b>Length:</b> 37.8 km<br>         <b>Capacity:</b> 198.4 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Underground<br>     </div>     </div>`)[0];
+                popup_cd1c1ad39a2945190a8bae6e280eb47b.setContent(html_b380a29d9eca7e8edc820f548400ce1b);
+            
+        
+
+        poly_line_2e8fbed00618a64e3f0797d7a83433c4.bindPopup(popup_cd1c1ad39a2945190a8bae6e280eb47b)
+        ;
+
+        
+    
+    
+            poly_line_2e8fbed00618a64e3f0797d7a83433c4.bindTooltip(
+                `<div>
+                     Ejisu Substation → Konongo Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_8a8887840602749d49e7213026576c97 = L.polyline(
+                [[6.2091, -1.6557], [6.6094, -1.2163]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_b5d0971fb7cdedda0c44cab6243c5eb8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ef10721d61724e1ea0418aeb7c6da84a = $(`<div id="html_ef10721d61724e1ea0418aeb7c6da84a" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 15<br>         <b>From:</b> Obuasi Substation<br>         <b>To:</b> Konongo Substation<br>         <b>Voltage:</b> 33 kV<br>         <b>Length:</b> 71.0 km<br>         <b>Capacity:</b> 284.6 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_b5d0971fb7cdedda0c44cab6243c5eb8.setContent(html_ef10721d61724e1ea0418aeb7c6da84a);
+            
+        
+
+        poly_line_8a8887840602749d49e7213026576c97.bindPopup(popup_b5d0971fb7cdedda0c44cab6243c5eb8)
+        ;
+
+        
+    
+    
+            poly_line_8a8887840602749d49e7213026576c97.bindTooltip(
+                `<div>
+                     Obuasi Substation → Konongo Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_6bc4012859cc69c7a6dd3d09f3bc4ace = L.polyline(
+                [[7.0553, -1.4029], [6.6094, -1.2163]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_c04c8ee25f24fe7d784df3288881eae5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f9d02d37092a6f5ad5c6382ca95926b7 = $(`<div id="html_f9d02d37092a6f5ad5c6382ca95926b7" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 16<br>         <b>From:</b> Mampong Substation<br>         <b>To:</b> Konongo Substation<br>         <b>Voltage:</b> 69 kV<br>         <b>Length:</b> 64.2 km<br>         <b>Capacity:</b> 61.5 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Underground<br>     </div>     </div>`)[0];
+                popup_c04c8ee25f24fe7d784df3288881eae5.setContent(html_f9d02d37092a6f5ad5c6382ca95926b7);
+            
+        
+
+        poly_line_6bc4012859cc69c7a6dd3d09f3bc4ace.bindPopup(popup_c04c8ee25f24fe7d784df3288881eae5)
+        ;
+
+        
+    
+    
+            poly_line_6bc4012859cc69c7a6dd3d09f3bc4ace.bindTooltip(
+                `<div>
+                     Mampong Substation → Konongo Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_c939346416bfbb5d5a7a57f0eb38e27a = L.polyline(
+                [[4.9048, -1.7562], [4.9905, -1.7714]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_55a2efe0d7ba6d7aaeca83011d236e7d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7499f32c0099440c96cc57ad1c59b60c = $(`<div id="html_7499f32c0099440c96cc57ad1c59b60c" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 17<br>         <b>From:</b> Takoradi Substation<br>         <b>To:</b> Aboadze Substation<br>         <b>Voltage:</b> 33 kV<br>         <b>Length:</b> 12.3 km<br>         <b>Capacity:</b> 78.8 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_55a2efe0d7ba6d7aaeca83011d236e7d.setContent(html_7499f32c0099440c96cc57ad1c59b60c);
+            
+        
+
+        poly_line_c939346416bfbb5d5a7a57f0eb38e27a.bindPopup(popup_55a2efe0d7ba6d7aaeca83011d236e7d)
+        ;
+
+        
+    
+    
+            poly_line_c939346416bfbb5d5a7a57f0eb38e27a.bindTooltip(
+                `<div>
+                     Takoradi Substation → Aboadze Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_338e95ea60ecb1b618b180c6c3307beb = L.polyline(
+                [[4.9048, -1.7562], [5.3093, -1.9927]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_3afaf8309cabfb0bd6d808180b87b865 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d20f8cc7065ac62552102a18ed171cfd = $(`<div id="html_d20f8cc7065ac62552102a18ed171cfd" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 18<br>         <b>From:</b> Takoradi Substation<br>         <b>To:</b> Tarkwa Substation<br>         <b>Voltage:</b> 33 kV<br>         <b>Length:</b> 66.2 km<br>         <b>Capacity:</b> 133.8 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_3afaf8309cabfb0bd6d808180b87b865.setContent(html_d20f8cc7065ac62552102a18ed171cfd);
+            
+        
+
+        poly_line_338e95ea60ecb1b618b180c6c3307beb.bindPopup(popup_3afaf8309cabfb0bd6d808180b87b865)
+        ;
+
+        
+    
+    
+            poly_line_338e95ea60ecb1b618b180c6c3307beb.bindTooltip(
+                `<div>
+                     Takoradi Substation → Tarkwa Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_ca7dffb8dd82742ff7598b12f67dc517 = L.polyline(
+                [[4.9905, -1.7714], [5.3093, -1.9927]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_1d12565fc02d573a6910e23588e1274b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_21c3d87d361e3b4d46bf06189698cd5a = $(`<div id="html_21c3d87d361e3b4d46bf06189698cd5a" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 19<br>         <b>From:</b> Aboadze Substation<br>         <b>To:</b> Tarkwa Substation<br>         <b>Voltage:</b> 33 kV<br>         <b>Length:</b> 55.8 km<br>         <b>Capacity:</b> 247.0 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_1d12565fc02d573a6910e23588e1274b.setContent(html_21c3d87d361e3b4d46bf06189698cd5a);
+            
+        
+
+        poly_line_ca7dffb8dd82742ff7598b12f67dc517.bindPopup(popup_1d12565fc02d573a6910e23588e1274b)
+        ;
+
+        
+    
+    
+            poly_line_ca7dffb8dd82742ff7598b12f67dc517.bindTooltip(
+                `<div>
+                     Aboadze Substation → Tarkwa Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_8c929d9a73bc8b2992c68479cd07a57f = L.polyline(
+                [[4.9905, -1.7714], [4.8747, -2.2381]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_816d2ddb57c05bb37e0d6e972fd50f09 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_50bc476beee6a02c2d0c4f4930505f7d = $(`<div id="html_50bc476beee6a02c2d0c4f4930505f7d" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 20<br>         <b>From:</b> Aboadze Substation<br>         <b>To:</b> Axim Substation<br>         <b>Voltage:</b> 33 kV<br>         <b>Length:</b> 66.4 km<br>         <b>Capacity:</b> 135.3 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_816d2ddb57c05bb37e0d6e972fd50f09.setContent(html_50bc476beee6a02c2d0c4f4930505f7d);
+            
+        
+
+        poly_line_8c929d9a73bc8b2992c68479cd07a57f.bindPopup(popup_816d2ddb57c05bb37e0d6e972fd50f09)
+        ;
+
+        
+    
+    
+            poly_line_8c929d9a73bc8b2992c68479cd07a57f.bindTooltip(
+                `<div>
+                     Aboadze Substation → Axim Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_b64e3aab6565d406ac61cbb2ba451b6e = L.polyline(
+                [[5.3093, -1.9927], [4.8747, -2.2381]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_3c2fde13e991ddaa0f402dbe365d5b99 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f15ccd78c00d357c41194524f88aa013 = $(`<div id="html_f15ccd78c00d357c41194524f88aa013" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 21<br>         <b>From:</b> Tarkwa Substation<br>         <b>To:</b> Axim Substation<br>         <b>Voltage:</b> 69 kV<br>         <b>Length:</b> 59.7 km<br>         <b>Capacity:</b> 264.2 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_3c2fde13e991ddaa0f402dbe365d5b99.setContent(html_f15ccd78c00d357c41194524f88aa013);
+            
+        
+
+        poly_line_b64e3aab6565d406ac61cbb2ba451b6e.bindPopup(popup_3c2fde13e991ddaa0f402dbe365d5b99)
+        ;
+
+        
+    
+    
+            poly_line_b64e3aab6565d406ac61cbb2ba451b6e.bindTooltip(
+                `<div>
+                     Tarkwa Substation → Axim Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_1206b55d1f99b7a5792de050d76592a1 = L.polyline(
+                [[5.1068, -1.2411], [5.362, -0.6218]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_0ff4ad3816256033e540466a093ab160 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_116c08bc2495dd1c3f11523ea8942bfb = $(`<div id="html_116c08bc2495dd1c3f11523ea8942bfb" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 22<br>         <b>From:</b> Cape Coast Substation<br>         <b>To:</b> Winneba Substation<br>         <b>Voltage:</b> 69 kV<br>         <b>Length:</b> 84.4 km<br>         <b>Capacity:</b> 249.8 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_0ff4ad3816256033e540466a093ab160.setContent(html_116c08bc2495dd1c3f11523ea8942bfb);
+            
+        
+
+        poly_line_1206b55d1f99b7a5792de050d76592a1.bindPopup(popup_0ff4ad3816256033e540466a093ab160)
+        ;
+
+        
+    
+    
+            poly_line_1206b55d1f99b7a5792de050d76592a1.bindTooltip(
+                `<div>
+                     Cape Coast Substation → Winneba Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_3fe835aa014f81df127848fe83e7f81b = L.polyline(
+                [[5.1068, -1.2411], [5.5262, -0.4124]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_2a482bac0fe0d7d25bc1515dc0a46009 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3b3dd0192d69c23af00b54f7854c3e7d = $(`<div id="html_3b3dd0192d69c23af00b54f7854c3e7d" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 23<br>         <b>From:</b> Cape Coast Substation<br>         <b>To:</b> Kasoa Substation<br>         <b>Voltage:</b> 11 kV<br>         <b>Length:</b> 118.3 km<br>         <b>Capacity:</b> 98.0 MVA<br>         <b>Status:</b> Under Maintenance<br>         <b>Type:</b> Underground<br>     </div>     </div>`)[0];
+                popup_2a482bac0fe0d7d25bc1515dc0a46009.setContent(html_3b3dd0192d69c23af00b54f7854c3e7d);
+            
+        
+
+        poly_line_3fe835aa014f81df127848fe83e7f81b.bindPopup(popup_2a482bac0fe0d7d25bc1515dc0a46009)
+        ;
+
+        
+    
+    
+            poly_line_3fe835aa014f81df127848fe83e7f81b.bindTooltip(
+                `<div>
+                     Cape Coast Substation → Kasoa Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_b70c25daef0aa19f2396d957702d0bdf = L.polyline(
+                [[5.1068, -1.2411], [5.6984, -1.497]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_c03f049b12b4eaf1bd22a5fa7cf67a30 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bf19c128465964cf888a30cb93dafadc = $(`<div id="html_bf19c128465964cf888a30cb93dafadc" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 24<br>         <b>From:</b> Cape Coast Substation<br>         <b>To:</b> Assin Fosu Substation<br>         <b>Voltage:</b> 11 kV<br>         <b>Length:</b> 82.4 km<br>         <b>Capacity:</b> 294.7 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_c03f049b12b4eaf1bd22a5fa7cf67a30.setContent(html_bf19c128465964cf888a30cb93dafadc);
+            
+        
+
+        poly_line_b70c25daef0aa19f2396d957702d0bdf.bindPopup(popup_c03f049b12b4eaf1bd22a5fa7cf67a30)
+        ;
+
+        
+    
+    
+            poly_line_b70c25daef0aa19f2396d957702d0bdf.bindTooltip(
+                `<div>
+                     Cape Coast Substation → Assin Fosu Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_b7369b2b263c7ea6f45a1b613372b93a = L.polyline(
+                [[5.362, -0.6218], [5.5262, -0.4124]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_395d8c7665d500db54c7b8d79b6b19f8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5d769b5552ee8d04f25074a8c0345f6d = $(`<div id="html_5d769b5552ee8d04f25074a8c0345f6d" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 25<br>         <b>From:</b> Winneba Substation<br>         <b>To:</b> Kasoa Substation<br>         <b>Voltage:</b> 11 kV<br>         <b>Length:</b> 32.3 km<br>         <b>Capacity:</b> 289.5 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_395d8c7665d500db54c7b8d79b6b19f8.setContent(html_5d769b5552ee8d04f25074a8c0345f6d);
+            
+        
+
+        poly_line_b7369b2b263c7ea6f45a1b613372b93a.bindPopup(popup_395d8c7665d500db54c7b8d79b6b19f8)
+        ;
+
+        
+    
+    
+            poly_line_b7369b2b263c7ea6f45a1b613372b93a.bindTooltip(
+                `<div>
+                     Winneba Substation → Kasoa Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_f13d6fe12a73a018061b0695df6eef84 = L.polyline(
+                [[5.5262, -0.4124], [5.6984, -1.497]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_4a451e737711ed7086495e506035e70f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b899a04c47966ccbeb4cdfb1dee12b13 = $(`<div id="html_b899a04c47966ccbeb4cdfb1dee12b13" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 26<br>         <b>From:</b> Kasoa Substation<br>         <b>To:</b> Assin Fosu Substation<br>         <b>Voltage:</b> 11 kV<br>         <b>Length:</b> 140.9 km<br>         <b>Capacity:</b> 295.6 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_4a451e737711ed7086495e506035e70f.setContent(html_b899a04c47966ccbeb4cdfb1dee12b13);
+            
+        
+
+        poly_line_f13d6fe12a73a018061b0695df6eef84.bindPopup(popup_4a451e737711ed7086495e506035e70f)
+        ;
+
+        
+    
+    
+            poly_line_f13d6fe12a73a018061b0695df6eef84.bindTooltip(
+                `<div>
+                     Kasoa Substation → Assin Fosu Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_93396eeb8c4fcb1d3e173f04d19271b1 = L.polyline(
+                [[6.1017, -0.254], [6.2991, 0.0641]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_7cbd84e011baadfc19736c92462ffa15 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ed3247772f63fd809ae06066bbdecfcf = $(`<div id="html_ed3247772f63fd809ae06066bbdecfcf" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 27<br>         <b>From:</b> Koforidua Substation<br>         <b>To:</b> Akosombo Substation<br>         <b>Voltage:</b> 11 kV<br>         <b>Length:</b> 48.0 km<br>         <b>Capacity:</b> 165.6 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_7cbd84e011baadfc19736c92462ffa15.setContent(html_ed3247772f63fd809ae06066bbdecfcf);
+            
+        
+
+        poly_line_93396eeb8c4fcb1d3e173f04d19271b1.bindPopup(popup_7cbd84e011baadfc19736c92462ffa15)
+        ;
+
+        
+    
+    
+            poly_line_93396eeb8c4fcb1d3e173f04d19271b1.bindTooltip(
+                `<div>
+                     Koforidua Substation → Akosombo Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_5d1523b481f8a353456bea7999ec117b = L.polyline(
+                [[6.1017, -0.254], [6.5502, -0.7749]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_50cb97189bb6d147e3ca06c84b47e8ba = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cabf733e485ab7b65cd032c874775705 = $(`<div id="html_cabf733e485ab7b65cd032c874775705" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 28<br>         <b>From:</b> Koforidua Substation<br>         <b>To:</b> Nkawkaw Substation<br>         <b>Voltage:</b> 11 kV<br>         <b>Length:</b> 98.0 km<br>         <b>Capacity:</b> 277.8 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_50cb97189bb6d147e3ca06c84b47e8ba.setContent(html_cabf733e485ab7b65cd032c874775705);
+            
+        
+
+        poly_line_5d1523b481f8a353456bea7999ec117b.bindPopup(popup_50cb97189bb6d147e3ca06c84b47e8ba)
+        ;
+
+        
+    
+    
+            poly_line_5d1523b481f8a353456bea7999ec117b.bindTooltip(
+                `<div>
+                     Koforidua Substation → Nkawkaw Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_45fb56e74a29f427d93e322f153c38e8 = L.polyline(
+                [[6.2991, 0.0641], [6.5502, -0.7749]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_b9e0fdfca73380b4750b37fb0cf9967f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7b80417e2ff2d40b6ecd49c115559dad = $(`<div id="html_7b80417e2ff2d40b6ecd49c115559dad" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 29<br>         <b>From:</b> Akosombo Substation<br>         <b>To:</b> Nkawkaw Substation<br>         <b>Voltage:</b> 69 kV<br>         <b>Length:</b> 117.8 km<br>         <b>Capacity:</b> 111.3 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_b9e0fdfca73380b4750b37fb0cf9967f.setContent(html_7b80417e2ff2d40b6ecd49c115559dad);
+            
+        
+
+        poly_line_45fb56e74a29f427d93e322f153c38e8.bindPopup(popup_b9e0fdfca73380b4750b37fb0cf9967f)
+        ;
+
+        
+    
+    
+            poly_line_45fb56e74a29f427d93e322f153c38e8.bindTooltip(
+                `<div>
+                     Akosombo Substation → Nkawkaw Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_28f0af69bfa59168252d3498a86c0ab8 = L.polyline(
+                [[6.2991, 0.0641], [6.035, -0.4535]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_018404654a798f3bc306ed29ee31be03 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_777d2dc67262799dc7a1e16c2a22740d = $(`<div id="html_777d2dc67262799dc7a1e16c2a22740d" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 30<br>         <b>From:</b> Akosombo Substation<br>         <b>To:</b> Suhum Substation<br>         <b>Voltage:</b> 69 kV<br>         <b>Length:</b> 82.7 km<br>         <b>Capacity:</b> 209.6 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Underground<br>     </div>     </div>`)[0];
+                popup_018404654a798f3bc306ed29ee31be03.setContent(html_777d2dc67262799dc7a1e16c2a22740d);
+            
+        
+
+        poly_line_28f0af69bfa59168252d3498a86c0ab8.bindPopup(popup_018404654a798f3bc306ed29ee31be03)
+        ;
+
+        
+    
+    
+            poly_line_28f0af69bfa59168252d3498a86c0ab8.bindTooltip(
+                `<div>
+                     Akosombo Substation → Suhum Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_b0c5e7911eca833cf2f2cd51993f9781 = L.polyline(
+                [[6.5502, -0.7749], [6.035, -0.4535]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_1de96d3bcb836cfc2b5244fd8c89b6d8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c7891af601d1dd96557473254fac6363 = $(`<div id="html_c7891af601d1dd96557473254fac6363" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 31<br>         <b>From:</b> Nkawkaw Substation<br>         <b>To:</b> Suhum Substation<br>         <b>Voltage:</b> 69 kV<br>         <b>Length:</b> 75.9 km<br>         <b>Capacity:</b> 78.9 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Underground<br>     </div>     </div>`)[0];
+                popup_1de96d3bcb836cfc2b5244fd8c89b6d8.setContent(html_c7891af601d1dd96557473254fac6363);
+            
+        
+
+        poly_line_b0c5e7911eca833cf2f2cd51993f9781.bindPopup(popup_1de96d3bcb836cfc2b5244fd8c89b6d8)
+        ;
+
+        
+    
+    
+            poly_line_b0c5e7911eca833cf2f2cd51993f9781.bindTooltip(
+                `<div>
+                     Nkawkaw Substation → Suhum Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_6aca1b090fe235590644c8f93254c87b = L.polyline(
+                [[6.6194, 0.473], [6.1597, 0.1061]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_87eb308ff5d344e900532ca7c71835ef = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9028cb100dddcf314c2997f8f2026fae = $(`<div id="html_9028cb100dddcf314c2997f8f2026fae" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 32<br>         <b>From:</b> Ho Substation<br>         <b>To:</b> Kpong Substation<br>         <b>Voltage:</b> 11 kV<br>         <b>Length:</b> 79.5 km<br>         <b>Capacity:</b> 163.1 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_87eb308ff5d344e900532ca7c71835ef.setContent(html_9028cb100dddcf314c2997f8f2026fae);
+            
+        
+
+        poly_line_6aca1b090fe235590644c8f93254c87b.bindPopup(popup_87eb308ff5d344e900532ca7c71835ef)
+        ;
+
+        
+    
+    
+            poly_line_6aca1b090fe235590644c8f93254c87b.bindTooltip(
+                `<div>
+                     Ho Substation → Kpong Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_e4cd77d43caf4d93000b0313e1b27d48 = L.polyline(
+                [[6.6194, 0.473], [5.9995, 0.5762]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_167d9858d8e949142e153f98a8bb732b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ec7d583fa2c107f48cb203fcd60a96bd = $(`<div id="html_ec7d583fa2c107f48cb203fcd60a96bd" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 33<br>         <b>From:</b> Ho Substation<br>         <b>To:</b> Sogakope Substation<br>         <b>Voltage:</b> 11 kV<br>         <b>Length:</b> 84.4 km<br>         <b>Capacity:</b> 113.9 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_167d9858d8e949142e153f98a8bb732b.setContent(html_ec7d583fa2c107f48cb203fcd60a96bd);
+            
+        
+
+        poly_line_e4cd77d43caf4d93000b0313e1b27d48.bindPopup(popup_167d9858d8e949142e153f98a8bb732b)
+        ;
+
+        
+    
+    
+            poly_line_e4cd77d43caf4d93000b0313e1b27d48.bindTooltip(
+                `<div>
+                     Ho Substation → Sogakope Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_278b95e80690db09807ee50b65311a03 = L.polyline(
+                [[6.1597, 0.1061], [5.9995, 0.5762]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_282a1655879d9686f6c592562afa8e1a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8c42c08995ba1f5d3f5012460935b85b = $(`<div id="html_8c42c08995ba1f5d3f5012460935b85b" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 34<br>         <b>From:</b> Kpong Substation<br>         <b>To:</b> Sogakope Substation<br>         <b>Voltage:</b> 11 kV<br>         <b>Length:</b> 59.7 km<br>         <b>Capacity:</b> 32.9 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_282a1655879d9686f6c592562afa8e1a.setContent(html_8c42c08995ba1f5d3f5012460935b85b);
+            
+        
+
+        poly_line_278b95e80690db09807ee50b65311a03.bindPopup(popup_282a1655879d9686f6c592562afa8e1a)
+        ;
+
+        
+    
+    
+            poly_line_278b95e80690db09807ee50b65311a03.bindTooltip(
+                `<div>
+                     Kpong Substation → Sogakope Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_a2d32e420b71706b4269b8c993e24c1f = L.polyline(
+                [[7.1436, 0.4766], [5.9995, 0.5762]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_e54d9dc2077497d6a14ba3d3a0bb985b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d35f4e53d264df4792479cc8dcd2a07b = $(`<div id="html_d35f4e53d264df4792479cc8dcd2a07b" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 35<br>         <b>From:</b> Hohoe Substation<br>         <b>To:</b> Sogakope Substation<br>         <b>Voltage:</b> 11 kV<br>         <b>Length:</b> 152.5 km<br>         <b>Capacity:</b> 221.1 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Underground<br>     </div>     </div>`)[0];
+                popup_e54d9dc2077497d6a14ba3d3a0bb985b.setContent(html_d35f4e53d264df4792479cc8dcd2a07b);
+            
+        
+
+        poly_line_a2d32e420b71706b4269b8c993e24c1f.bindPopup(popup_e54d9dc2077497d6a14ba3d3a0bb985b)
+        ;
+
+        
+    
+    
+            poly_line_a2d32e420b71706b4269b8c993e24c1f.bindTooltip(
+                `<div>
+                     Hohoe Substation → Sogakope Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_c6bb69cad8007afe1ebb9210905e1528 = L.polyline(
+                [[7.3375, -2.3318], [7.5934, -1.9405]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_0e1187579a4190f93b658358be7a4607 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1b2c2fff7c9fa6f26c54052a2b76da06 = $(`<div id="html_1b2c2fff7c9fa6f26c54052a2b76da06" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 36<br>         <b>From:</b> Sunyani Substation<br>         <b>To:</b> Techiman Substation<br>         <b>Voltage:</b> 33 kV<br>         <b>Length:</b> 63.1 km<br>         <b>Capacity:</b> 269.9 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_0e1187579a4190f93b658358be7a4607.setContent(html_1b2c2fff7c9fa6f26c54052a2b76da06);
+            
+        
+
+        poly_line_c6bb69cad8007afe1ebb9210905e1528.bindPopup(popup_0e1187579a4190f93b658358be7a4607)
+        ;
+
+        
+    
+    
+            poly_line_c6bb69cad8007afe1ebb9210905e1528.bindTooltip(
+                `<div>
+                     Sunyani Substation → Techiman Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_e990ead8f791ddb13b230938a17ff8c5 = L.polyline(
+                [[7.5934, -1.9405], [7.4443, -2.5946]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_528ecb8f05897276c51e4f283bb68bc1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6c5ee6fcf1b39699429e49814452ae22 = $(`<div id="html_6c5ee6fcf1b39699429e49814452ae22" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 37<br>         <b>From:</b> Techiman Substation<br>         <b>To:</b> Berekum Substation<br>         <b>Voltage:</b> 33 kV<br>         <b>Length:</b> 87.3 km<br>         <b>Capacity:</b> 34.1 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_528ecb8f05897276c51e4f283bb68bc1.setContent(html_6c5ee6fcf1b39699429e49814452ae22);
+            
+        
+
+        poly_line_e990ead8f791ddb13b230938a17ff8c5.bindPopup(popup_528ecb8f05897276c51e4f283bb68bc1)
+        ;
+
+        
+    
+    
+            poly_line_e990ead8f791ddb13b230938a17ff8c5.bindTooltip(
+                `<div>
+                     Techiman Substation → Berekum Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_c36b5fb0818ac246e36e3986bc8e0b09 = L.polyline(
+                [[9.4072, -0.8508], [9.4368, -0.0076]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_183ef30ecc88d9138c1d3a8e74c565d5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b30246abbdf2849a0487075b2851a68a = $(`<div id="html_b30246abbdf2849a0487075b2851a68a" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 38<br>         <b>From:</b> Tamale Substation<br>         <b>To:</b> Yendi Substation<br>         <b>Voltage:</b> 11 kV<br>         <b>Length:</b> 112.6 km<br>         <b>Capacity:</b> 296.6 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Underground<br>     </div>     </div>`)[0];
+                popup_183ef30ecc88d9138c1d3a8e74c565d5.setContent(html_b30246abbdf2849a0487075b2851a68a);
+            
+        
+
+        poly_line_c36b5fb0818ac246e36e3986bc8e0b09.bindPopup(popup_183ef30ecc88d9138c1d3a8e74c565d5)
+        ;
+
+        
+    
+    
+            poly_line_c36b5fb0818ac246e36e3986bc8e0b09.bindTooltip(
+                `<div>
+                     Tamale Substation → Yendi Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_1044dabb7a5c79047a7399e4de5366ec = L.polyline(
+                [[10.7789, -0.8524], [11.0615, -0.2333]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_3bb54291664c308eeeae40cd34261513 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8bff03f6a7b1ea587abe95e20bd20f94 = $(`<div id="html_8bff03f6a7b1ea587abe95e20bd20f94" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 39<br>         <b>From:</b> Bolgatanga Substation<br>         <b>To:</b> Bawku Substation<br>         <b>Voltage:</b> 161 kV<br>         <b>Length:</b> 86.6 km<br>         <b>Capacity:</b> 64.6 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Underground<br>     </div>     </div>`)[0];
+                popup_3bb54291664c308eeeae40cd34261513.setContent(html_8bff03f6a7b1ea587abe95e20bd20f94);
+            
+        
+
+        poly_line_1044dabb7a5c79047a7399e4de5366ec.bindPopup(popup_3bb54291664c308eeeae40cd34261513)
+        ;
+
+        
+    
+    
+            poly_line_1044dabb7a5c79047a7399e4de5366ec.bindTooltip(
+                `<div>
+                     Bolgatanga Substation → Bawku Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_2e856eae2334e8279567a791e8bb3512 = L.polyline(
+                [[5.6085, -0.2193], [6.6856, -1.623]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_61d59907216f17b81f5f2adc91b331c9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9a021aab1d36eeec2723553e10db80c3 = $(`<div id="html_9a021aab1d36eeec2723553e10db80c3" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 40<br>         <b>From:</b> Achimota Substation<br>         <b>To:</b> Kumasi Central Substation<br>         <b>Voltage:</b> 330 kV<br>         <b>Length:</b> 225.4 km<br>         <b>Capacity:</b> 303.7 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_61d59907216f17b81f5f2adc91b331c9.setContent(html_9a021aab1d36eeec2723553e10db80c3);
+            
+        
+
+        poly_line_2e856eae2334e8279567a791e8bb3512.bindPopup(popup_61d59907216f17b81f5f2adc91b331c9)
+        ;
+
+        
+    
+    
+            poly_line_2e856eae2334e8279567a791e8bb3512.bindTooltip(
+                `<div>
+                     Achimota Substation → Kumasi Central Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_3b3cc673fb3ddee9a0adc43a10bb7d0f = L.polyline(
+                [[6.6856, -1.623], [4.9048, -1.7562]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_a9acef85d52ab149ea5dbf278c0d8737 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0ae99c5196a77440ec48f00bfcd227a7 = $(`<div id="html_0ae99c5196a77440ec48f00bfcd227a7" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 41<br>         <b>From:</b> Kumasi Central Substation<br>         <b>To:</b> Takoradi Substation<br>         <b>Voltage:</b> 330 kV<br>         <b>Length:</b> 228.3 km<br>         <b>Capacity:</b> 298.9 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_a9acef85d52ab149ea5dbf278c0d8737.setContent(html_0ae99c5196a77440ec48f00bfcd227a7);
+            
+        
+
+        poly_line_3b3cc673fb3ddee9a0adc43a10bb7d0f.bindPopup(popup_a9acef85d52ab149ea5dbf278c0d8737)
+        ;
+
+        
+    
+    
+            poly_line_3b3cc673fb3ddee9a0adc43a10bb7d0f.bindTooltip(
+                `<div>
+                     Kumasi Central Substation → Takoradi Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_f6d6bdbc975ac9275f353f6fba85fe5c = L.polyline(
+                [[4.9048, -1.7562], [5.1068, -1.2411]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_2f4a942c984c6d25f82d00791e9bc20b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ec815e9924f1b80b553a4e7e05ba8689 = $(`<div id="html_ec815e9924f1b80b553a4e7e05ba8689" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 42<br>         <b>From:</b> Takoradi Substation<br>         <b>To:</b> Cape Coast Substation<br>         <b>Voltage:</b> 330 kV<br>         <b>Length:</b> 70.5 km<br>         <b>Capacity:</b> 455.1 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_2f4a942c984c6d25f82d00791e9bc20b.setContent(html_ec815e9924f1b80b553a4e7e05ba8689);
+            
+        
+
+        poly_line_f6d6bdbc975ac9275f353f6fba85fe5c.bindPopup(popup_2f4a942c984c6d25f82d00791e9bc20b)
+        ;
+
+        
+    
+    
+            poly_line_f6d6bdbc975ac9275f353f6fba85fe5c.bindTooltip(
+                `<div>
+                     Takoradi Substation → Cape Coast Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_0b346b49efc3eaf1797fe602895124a7 = L.polyline(
+                [[5.1068, -1.2411], [6.1017, -0.254]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_7008e9a5108d5a2f8043b8241a83ff52 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_48428a7f2f98252f9e8dcb7dd331bc7c = $(`<div id="html_48428a7f2f98252f9e8dcb7dd331bc7c" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 43<br>         <b>From:</b> Cape Coast Substation<br>         <b>To:</b> Koforidua Substation<br>         <b>Voltage:</b> 330 kV<br>         <b>Length:</b> 178.8 km<br>         <b>Capacity:</b> 506.3 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_7008e9a5108d5a2f8043b8241a83ff52.setContent(html_48428a7f2f98252f9e8dcb7dd331bc7c);
+            
+        
+
+        poly_line_0b346b49efc3eaf1797fe602895124a7.bindPopup(popup_7008e9a5108d5a2f8043b8241a83ff52)
+        ;
+
+        
+    
+    
+            poly_line_0b346b49efc3eaf1797fe602895124a7.bindTooltip(
+                `<div>
+                     Cape Coast Substation → Koforidua Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_ea85b7d0a2bd57bc80598cda20a7f782 = L.polyline(
+                [[6.1017, -0.254], [6.6194, 0.473]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_6a70b713ef459720522252b036e8b38e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3aaa37fb89cfb37b7a6f446407099cbb = $(`<div id="html_3aaa37fb89cfb37b7a6f446407099cbb" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 44<br>         <b>From:</b> Koforidua Substation<br>         <b>To:</b> Ho Substation<br>         <b>Voltage:</b> 330 kV<br>         <b>Length:</b> 113.7 km<br>         <b>Capacity:</b> 408.5 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_6a70b713ef459720522252b036e8b38e.setContent(html_3aaa37fb89cfb37b7a6f446407099cbb);
+            
+        
+
+        poly_line_ea85b7d0a2bd57bc80598cda20a7f782.bindPopup(popup_6a70b713ef459720522252b036e8b38e)
+        ;
+
+        
+    
+    
+            poly_line_ea85b7d0a2bd57bc80598cda20a7f782.bindTooltip(
+                `<div>
+                     Koforidua Substation → Ho Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_2450b0815a6732e9525a4788c7fd1748 = L.polyline(
+                [[6.6194, 0.473], [7.3375, -2.3318]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_5ac9fcff24097ea0e583da51af497a9e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_555ca8a5b3216b2db8fef9f76669057b = $(`<div id="html_555ca8a5b3216b2db8fef9f76669057b" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 45<br>         <b>From:</b> Ho Substation<br>         <b>To:</b> Sunyani Substation<br>         <b>Voltage:</b> 330 kV<br>         <b>Length:</b> 367.7 km<br>         <b>Capacity:</b> 450.7 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_5ac9fcff24097ea0e583da51af497a9e.setContent(html_555ca8a5b3216b2db8fef9f76669057b);
+            
+        
+
+        poly_line_2450b0815a6732e9525a4788c7fd1748.bindPopup(popup_5ac9fcff24097ea0e583da51af497a9e)
+        ;
+
+        
+    
+    
+            poly_line_2450b0815a6732e9525a4788c7fd1748.bindTooltip(
+                `<div>
+                     Ho Substation → Sunyani Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_eff37943b08657cdc9239fe48238b7c2 = L.polyline(
+                [[7.3375, -2.3318], [9.4072, -0.8508]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_df532b836ba275832c8f87f967f818bd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_260ab3fc7e9f3505eddd1e42804fc200 = $(`<div id="html_260ab3fc7e9f3505eddd1e42804fc200" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 46<br>         <b>From:</b> Sunyani Substation<br>         <b>To:</b> Tamale Substation<br>         <b>Voltage:</b> 330 kV<br>         <b>Length:</b> 324.3 km<br>         <b>Capacity:</b> 309.8 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_df532b836ba275832c8f87f967f818bd.setContent(html_260ab3fc7e9f3505eddd1e42804fc200);
+            
+        
+
+        poly_line_eff37943b08657cdc9239fe48238b7c2.bindPopup(popup_df532b836ba275832c8f87f967f818bd)
+        ;
+
+        
+    
+    
+            poly_line_eff37943b08657cdc9239fe48238b7c2.bindTooltip(
+                `<div>
+                     Sunyani Substation → Tamale Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_33b0ece56187486f22c70ed63473ef9f = L.polyline(
+                [[9.4072, -0.8508], [10.7789, -0.8524]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_95a73ee8f81bc12dc097289919a6d88d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_45020d671bf108e0d9e34ca9ff93f87c = $(`<div id="html_45020d671bf108e0d9e34ca9ff93f87c" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 47<br>         <b>From:</b> Tamale Substation<br>         <b>To:</b> Bolgatanga Substation<br>         <b>Voltage:</b> 330 kV<br>         <b>Length:</b> 175.4 km<br>         <b>Capacity:</b> 231.0 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_95a73ee8f81bc12dc097289919a6d88d.setContent(html_45020d671bf108e0d9e34ca9ff93f87c);
+            
+        
+
+        poly_line_33b0ece56187486f22c70ed63473ef9f.bindPopup(popup_95a73ee8f81bc12dc097289919a6d88d)
+        ;
+
+        
+    
+    
+            poly_line_33b0ece56187486f22c70ed63473ef9f.bindTooltip(
+                `<div>
+                     Tamale Substation → Bolgatanga Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_109f449ebce7bd1b838bc14e6032c466 = L.polyline(
+                [[10.7789, -0.8524], [10.0682, -2.506]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_dde006a79306c7d5d64ec9a6452a2c84 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4b1f0ce8a6a898bde33a0d1a8688411d = $(`<div id="html_4b1f0ce8a6a898bde33a0d1a8688411d" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 48<br>         <b>From:</b> Bolgatanga Substation<br>         <b>To:</b> Wa Substation<br>         <b>Voltage:</b> 330 kV<br>         <b>Length:</b> 227.0 km<br>         <b>Capacity:</b> 314.3 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_dde006a79306c7d5d64ec9a6452a2c84.setContent(html_4b1f0ce8a6a898bde33a0d1a8688411d);
+            
+        
+
+        poly_line_109f449ebce7bd1b838bc14e6032c466.bindPopup(popup_dde006a79306c7d5d64ec9a6452a2c84)
+        ;
+
+        
+    
+    
+            poly_line_109f449ebce7bd1b838bc14e6032c466.bindTooltip(
+                `<div>
+                     Bolgatanga Substation → Wa Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_484ce5f2f75eff63415c21ed7f797c97 = L.polyline(
+                [[10.7789, -0.8524], [11.2, -0.75]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_8b6eb0a9724bd13f1eb07b0dc8f9bddc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_559294595e96b20ff96897a9e057ce74 = $(`<div id="html_559294595e96b20ff96897a9e057ce74" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 49<br>         <b>From:</b> Bolgatanga Substation<br>         <b>To:</b> Bolgatanga Interconnection<br>         <b>Voltage:</b> 330 kV<br>         <b>Length:</b> 53.0 km<br>         <b>Capacity:</b> 217.9 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_8b6eb0a9724bd13f1eb07b0dc8f9bddc.setContent(html_559294595e96b20ff96897a9e057ce74);
+            
+        
+
+        poly_line_484ce5f2f75eff63415c21ed7f797c97.bindPopup(popup_8b6eb0a9724bd13f1eb07b0dc8f9bddc)
+        ;
+
+        
+    
+    
+            poly_line_484ce5f2f75eff63415c21ed7f797c97.bindTooltip(
+                `<div>
+                     Bolgatanga Substation → Bolgatanga Interconnection
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_11ef34f9501039b9ac42fc8be2dbbab6 = L.polyline(
+                [[11.2, -0.75], [11.18, -4.3]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_00a106e3f4d6c931cf0590a78613322f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e8fd063cc33fe6b2a33812049c9a1ff3 = $(`<div id="html_e8fd063cc33fe6b2a33812049c9a1ff3" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 50<br>         <b>From:</b> Bolgatanga Interconnection<br>         <b>To:</b> Bobo-Dioulasso Hub<br>         <b>Voltage:</b> 330 kV<br>         <b>Length:</b> 426.0 km<br>         <b>Capacity:</b> 229.9 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_00a106e3f4d6c931cf0590a78613322f.setContent(html_e8fd063cc33fe6b2a33812049c9a1ff3);
+            
+        
+
+        poly_line_11ef34f9501039b9ac42fc8be2dbbab6.bindPopup(popup_00a106e3f4d6c931cf0590a78613322f)
+        ;
+
+        
+    
+    
+            poly_line_11ef34f9501039b9ac42fc8be2dbbab6.bindTooltip(
+                `<div>
+                     Bolgatanga Interconnection → Bobo-Dioulasso Hub
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_cb3185339ecd95d94a75b777991e9fac = L.polyline(
+                [[5.2, -2.85], [6.6856, -1.623]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_d11a7d243776776297d297d788bd4759 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_39d204e1e932979e5a78db8be3dc6624 = $(`<div id="html_39d204e1e932979e5a78db8be3dc6624" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 51<br>         <b>From:</b> Elubo Border Station<br>         <b>To:</b> Kumasi Central Substation<br>         <b>Voltage:</b> 330 kV<br>         <b>Length:</b> 235.2 km<br>         <b>Capacity:</b> 285.0 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_d11a7d243776776297d297d788bd4759.setContent(html_39d204e1e932979e5a78db8be3dc6624);
+            
+        
+
+        poly_line_cb3185339ecd95d94a75b777991e9fac.bindPopup(popup_d11a7d243776776297d297d788bd4759)
+        ;
+
+        
+    
+    
+            poly_line_cb3185339ecd95d94a75b777991e9fac.bindTooltip(
+                `<div>
+                     Elubo Border Station → Kumasi Central Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_4000754b2b2ece4f8348da11c51f9e03 = L.polyline(
+                [[5.2, -2.85], [5.35, -4.0]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_88bf349be6f207fb3e9958b5f7805fbb = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c6cb4849c116a2079a43a13ab413ee76 = $(`<div id="html_c6cb4849c116a2079a43a13ab413ee76" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 52<br>         <b>From:</b> Elubo Border Station<br>         <b>To:</b> Abidjan Transmission Hub<br>         <b>Voltage:</b> 330 kV<br>         <b>Length:</b> 141.3 km<br>         <b>Capacity:</b> 184.6 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_88bf349be6f207fb3e9958b5f7805fbb.setContent(html_c6cb4849c116a2079a43a13ab413ee76);
+            
+        
+
+        poly_line_4000754b2b2ece4f8348da11c51f9e03.bindPopup(popup_88bf349be6f207fb3e9958b5f7805fbb)
+        ;
+
+        
+    
+    
+            poly_line_4000754b2b2ece4f8348da11c51f9e03.bindTooltip(
+                `<div>
+                     Elubo Border Station → Abidjan Transmission Hub
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_845979e75646a985fede12df85dc6907 = L.polyline(
+                [[6.12, 1.19], [5.6596, -0.0226]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_ccccfbcf60fba55047ebb816123377c8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_990772e8e5487425d742ba909a31e53e = $(`<div id="html_990772e8e5487425d742ba909a31e53e" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 53<br>         <b>From:</b> Aflao Border Station<br>         <b>To:</b> Tema Substation<br>         <b>Voltage:</b> 330 kV<br>         <b>Length:</b> 157.9 km<br>         <b>Capacity:</b> 207.8 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_ccccfbcf60fba55047ebb816123377c8.setContent(html_990772e8e5487425d742ba909a31e53e);
+            
+        
+
+        poly_line_845979e75646a985fede12df85dc6907.bindPopup(popup_ccccfbcf60fba55047ebb816123377c8)
+        ;
+
+        
+    
+    
+            poly_line_845979e75646a985fede12df85dc6907.bindTooltip(
+                `<div>
+                     Aflao Border Station → Tema Substation
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_1715eb9ff65736c208d6c33828f55da7 = L.polyline(
+                [[6.12, 1.19], [6.13, 1.22]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_91e13da02a37859a2317337ab22f1f93 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5bdb53b75c72c79e46786666a92055e2 = $(`<div id="html_5bdb53b75c72c79e46786666a92055e2" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 54<br>         <b>From:</b> Aflao Border Station<br>         <b>To:</b> Lome Transmission Hub<br>         <b>Voltage:</b> 330 kV<br>         <b>Length:</b> 3.8 km<br>         <b>Capacity:</b> 323.5 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_91e13da02a37859a2317337ab22f1f93.setContent(html_5bdb53b75c72c79e46786666a92055e2);
+            
+        
+
+        poly_line_1715eb9ff65736c208d6c33828f55da7.bindPopup(popup_91e13da02a37859a2317337ab22f1f93)
+        ;
+
+        
+    
+    
+            poly_line_1715eb9ff65736c208d6c33828f55da7.bindTooltip(
+                `<div>
+                     Aflao Border Station → Lome Transmission Hub
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_f9c715df2b7366e2fe5bb63bd7cacc75 = L.polyline(
+                [[6.13, 1.22], [6.37, 2.43]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6d521d2c98ca7d06ad1800e143373613);
+        
+    
+        var popup_c6e2d1908ae293ce54cdc387d3b1c5fa = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_45148bc337b37ecc1fbda159aef8b47b = $(`<div id="html_45148bc337b37ecc1fbda159aef8b47b" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 250px;">         <h4>Transmission Line</h4>          <b>Line ID:</b> 55<br>         <b>From:</b> Lome Transmission Hub<br>         <b>To:</b> Cotonou Transmission Hub<br>         <b>Voltage:</b> 330 kV<br>         <b>Length:</b> 150.0 km<br>         <b>Capacity:</b> 326.6 MVA<br>         <b>Status:</b> Active<br>         <b>Type:</b> Overhead<br>     </div>     </div>`)[0];
+                popup_c6e2d1908ae293ce54cdc387d3b1c5fa.setContent(html_45148bc337b37ecc1fbda159aef8b47b);
+            
+        
+
+        poly_line_f9c715df2b7366e2fe5bb63bd7cacc75.bindPopup(popup_c6e2d1908ae293ce54cdc387d3b1c5fa)
+        ;
+
+        
+    
+    
+            poly_line_f9c715df2b7366e2fe5bb63bd7cacc75.bindTooltip(
+                `<div>
+                     Lome Transmission Hub → Cotonou Transmission Hub
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_6d521d2c98ca7d06ad1800e143373613.addTo(map_bc1e5df5d7c35616c77a9f80422013a3);
+        
+    
+            var layer_control_48c5053db8aa663a823a93cf81e5aa99_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_ae27ce0fcbfcddcffee9979353f34cbf,
+                },
+                overlays :  {
+                    "330 kV+" : feature_group_f53fe836afd6feeefc84a24daad2f0fb,
+                    "220\u2013329 kV" : feature_group_d431a2606bf10d5833e490e22f19d015,
+                    "132\u2013219 kV" : feature_group_492d03242e702e0fcfbb2a2608b37d51,
+                    "69\u2013131 kV" : feature_group_1f0310df80bd80dd35c314878d45ee52,
+                    "Below 69 kV" : feature_group_5462dc4eb4df06317f723e7e406b99e5,
+                    "Unknown Voltage" : feature_group_99e2b1d29075d31307af3bb361d3b25d,
+                    "Transmission Lines" : feature_group_6d521d2c98ca7d06ad1800e143373613,
+                },
+            };
+            let layer_control_48c5053db8aa663a823a93cf81e5aa99 = L.control.layers(
+                layer_control_48c5053db8aa663a823a93cf81e5aa99_layers.base_layers,
+                layer_control_48c5053db8aa663a823a93cf81e5aa99_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_bc1e5df5d7c35616c77a9f80422013a3);
+
+        
+    
+            L.control.fullscreen(
+                {
+  "position": "topright",
+  "title": "Full Screen",
+  "titleCancel": "Exit Full Screen",
+  "forceSeparateButton": false,
+}
+            ).addTo(map_bc1e5df5d7c35616c77a9f80422013a3);
+        
+</script>
+</html>
