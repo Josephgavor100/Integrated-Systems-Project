@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register - ClinicCare-Lite</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='theme.js') }}" defer></script>
+</head>
+<body>
+    <div class="theme-picker">
+        <div class="theme-dot" style="background:#003f7d" onclick="setTheme('default')"></div>
+        <div class="theme-dot" style="background:#1c2b4a" onclick="setTheme('black-blue')"></div>
+        <div class="theme-dot" style="background:#dc2626" onclick="setTheme('white-red')"></div>
+    </div>
+    <div class="container">
+        <h1>Create an Account</h1>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul>{% for message in messages %}<li>{{ message }}</li>{% endfor %}</ul>
+          {% endif %}
+        {% endwith %}
+        <form method="POST">
+            Name: <input name="name" required><br>
+            ID Number (8 digits): <input name="id_number" required><br>
+            Password: <input name="password" type="password" required><br>
+            Confirm Password: <input name="confirm_password" type="password" required><br>
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="{{ url_for('login') }}">Log in</a></p>
+    </div>
+    <footer>ClinicCare-Lite — Group 3 C'29</footer>
+</body>
+</html>
