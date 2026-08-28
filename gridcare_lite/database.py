@@ -11,12 +11,12 @@ def hash_password(password: str) -> str:
     return hashlib.sha256(password.encode()).hexdigest()
 
 def init_db():
-    """Initialize database tables matching your initial schema and seed default users."""
+    """Initialize database tables matching initial schema and seed default users."""
     DB_PATH.parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
 
-    # 1. Users table (Matching your initial schema from last week)
+    # 1. Users table
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS users (
             user_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -45,7 +45,8 @@ def init_db():
         default_users = [
             ("admin", hash_password("admin123"), "Admin", "System Admin"),
             ("engineer", hash_password("eng123"), "Engineer", "Lead Engineer"),
-            ("tech", hash_password("tech123"), "Technician", "Field Technician")
+            ("tech", hash_password("tech123"), "Technician", "Field Technician"),
+            ("cs_user", hash_password("cs123"), "Customer Service", "Rep Support")
         ]
         cursor.executemany(
             "INSERT INTO users (username, password_hash, role, full_name) VALUES (?, ?, ?, ?)",
@@ -82,6 +83,22 @@ def verify_user(username, password):
         return {"user_id": user[0], "username": user[1], "full_name": user[2], "role": user[3]}
     return None
 
+def create_user(username: str, password: str, role: str, full_name: str):
+    """Create a new user entry with SHA-256 hashed password."""
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    try:
+        cursor.execute(
+            "INSERT INTO users (username, password_hash, role, full_name) VALUES (?, ?, ?, ?)",
+            (username, hash_password(password), role, full_name)
+        )
+        conn.commit()
+        conn.close()
+        return True, "User created successfully!"
+    except sqlite3.IntegrityError:
+        conn.close()
+        return False, "Username already exists."
+
 def fetch_all_outages():
     """Retrieve all outage records."""
     conn = sqlite3.connect(DB_PATH)
@@ -101,7 +118,15 @@ def add_outage(region, severity, status, description):
     )
     conn.commit()
     conn.close()
-    
+
+def update_outage_status(outage_id, new_status):
+    """Update status across the outage resolution lifecycle."""
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute("UPDATE outages SET status = ? WHERE outage_id = ?", (new_status, outage_id))
+    conn.commit()
+    conn.close()
+
 if __name__ == "__main__":
     init_db()
     print("Database initialized successfully at data/gridcare.db!")
