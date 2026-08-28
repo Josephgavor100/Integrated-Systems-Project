@@ -6,7 +6,7 @@ from flask import Flask, request, session, redirect, url_for, render_template, f
 
 from config import Config
 from models import (
-    bcrypt, User, InvalidIDError, HealthTask, Message,
+    bcrypt, User, InvalidIDError, WeakPasswordError, HealthTask, Message,
     allowed_file, generate_safe_filename, send_notification_email,
     calculate_average_turnaround, calculate_category_breakdown
 )
@@ -18,9 +18,7 @@ os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 # --- in-memory "database" ---
 users = {}
-# TEMPORARY: seed one clinician test account for team testing.
-# Public /register always creates patients only, by design.
-users["99999999"] = User("Test Clinician", "99999999", "clinician123", role="clinician")
+users["99999999"] = User("Test Clinician", "99999999", "clinician123", email="clinician@example.com", role="clinician")
 tasks = {}
 next_task_id = [1]
 messages = []
@@ -62,6 +60,7 @@ def register():
     if request.method == 'POST':
         name = request.form['name']
         id_number = request.form['id_number']
+        email = request.form['email']
         password = request.form['password']
         confirm = request.form.get('confirm_password', password)
 
@@ -72,8 +71,8 @@ def register():
             flash("An account with this ID already exists.")
             return render_template('register.html')
         try:
-            user = User(name, id_number, password)
-        except InvalidIDError as e:
+            user = User(name, id_number, password, email=email)
+        except (InvalidIDError, WeakPasswordError) as e:
             flash(str(e))
             return render_template('register.html')
 
@@ -98,6 +97,7 @@ def login():
         return render_template('login.html')
 
     return render_template('login.html')
+
 
 @app.route('/dashboard')
 @login_required
@@ -144,7 +144,6 @@ def upload_file():
 
 
 # --- tasks / review ---
-
 @app.route('/tasks/submit', methods=['GET', 'POST'])
 @login_required
 def submit_task():
@@ -163,6 +162,7 @@ def submit_task():
         return redirect(url_for('dashboard'))
 
     return render_template('submit_task.html')
+
 
 @app.route('/tasks/review')
 @role_required('clinician')
@@ -186,7 +186,7 @@ def update_task_category(task_id):
         return redirect(url_for('review_queue'))
 
     patient = users.get(task.patient_id)
-    if patient and app.config.get('SMTP_USERNAME'):
+    if patient and patient.email and app.config.get('SMTP_USERNAME'):
         smtp_config = {
             'SMTP_SERVER': app.config['SMTP_SERVER'],
             'SMTP_PORT': app.config['SMTP_PORT'],
@@ -195,7 +195,7 @@ def update_task_category(task_id):
         }
         send_notification_email(
             smtp_config,
-            to_address=f"{patient.id_number}@example.com",
+            to_address=patient.email,
             subject="Your ClinicCare-Lite task status changed",
             body=f"Task #{task.task_id} is now marked: {task.category}"
         )
@@ -210,6 +210,7 @@ def view_messages():
     my_id = session['user_id']
     my_messages = [m for m in messages if m.recipient_id == my_id or m.sender_id == my_id]
     return render_template('messages.html', messages=my_messages)
+
 
 @app.route('/messages/send', methods=['POST'])
 @login_required
@@ -247,6 +248,7 @@ def analytics_dashboard():
     avg_turnaround = calculate_average_turnaround(tasks)
     breakdown = calculate_category_breakdown(tasks)
     return render_template('analytics.html', avg_turnaround=avg_turnaround, breakdown=breakdown)
+
 
 @app.route('/api/tasks')
 @role_required('clinician')
