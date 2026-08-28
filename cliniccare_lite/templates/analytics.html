@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head><title>Analytics - ClinicCare-Lite</title></head>
+<head>
+    <title>Analytics - ClinicCare-Lite</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
 <body>
-    <h1>Operational Analytics</h1>
-
-    <h2>Average Review Turnaround</h2>
-    {% if avg_turnaround is not none %}
-        <p>{{ avg_turnaround }} hours</p>
-    {% else %}
-        <p>Not enough data yet.</p>
-    {% endif %}
-
-    <h2>Tasks by Category</h2>
-    <ul>
-    {% for category, count in breakdown.items() %}
-        <li>{{ category }}: {{ count }}</li>
-    {% endfor %}
-    </ul>
+    <div class="container">
+        <h1>Operational Analytics</h1>
+        <h2>Average Review Turnaround</h2>
+        {% if avg_turnaround is not none %}
+            <p>{{ avg_turnaround }} hours</p>
+        {% else %}
+            <p>Not enough data yet.</p>
+        {% endif %}
+        <h2>Tasks by Category</h2>
+        <ul>
+        {% for category, count in breakdown.items() %}
+            <li>{{ category }}: {{ count }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+    <footer>ClinicCare-Lite — Group 3 C'29</footer>
 </body>
 </html>

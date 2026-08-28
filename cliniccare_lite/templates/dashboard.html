@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head><title>Dashboard - ClinicCare-Lite</title></head>
+<head>
+    <title>Dashboard - ClinicCare-Lite</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
 <body>
-    <h1>Welcome, {{ name }}</h1>
-    <p>Role: {{ role }}</p>
-    <a href="{{ url_for('logout') }}">Log out</a>
+    <div class="container">
+        <h1>Welcome, {{ name }}</h1>
+        <span class="role-badge">{{ role }}</span>
+        <br><br>
+        <a class="logout" href="{{ url_for('logout') }}">Log out</a>
+    </div>
+    <footer>ClinicCare-Lite — Group 3 C'29</footer>
 </body>
 </html>

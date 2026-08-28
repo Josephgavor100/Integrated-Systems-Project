@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head><title>Messages - ClinicCare-Lite</title></head>
+<head>
+    <title>Messages - ClinicCare-Lite</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
 <body>
-    <h1>Your Messages</h1>
-    <ul>
-    {% for msg in messages %}
-        <li>From {{ msg.sender_id }} to {{ msg.recipient_id }}: {{ msg.content }}</li>
-    {% endfor %}
-    </ul>
-    <form method="POST" action="{{ url_for('send_message') }}">
-        To (ID number): <input name="recipient_id" required><br>
-        <textarea name="content" required></textarea><br>
-        <button type="submit">Send</button>
-    </form>
+    <div class="container">
+        <h1>Your Messages</h1>
+        <ul>
+        {% for msg in messages %}
+            <li>From {{ msg.sender_id }} to {{ msg.recipient_id }}: {{ msg.content }}</li>
+        {% endfor %}
+        </ul>
+        <form method="POST" action="{{ url_for('send_message') }}">
+            To (ID number): <input name="recipient_id" required><br>
+            <textarea name="content" required></textarea><br>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <footer>ClinicCare-Lite — Group 3 C'29</footer>
 </body>
 </html>

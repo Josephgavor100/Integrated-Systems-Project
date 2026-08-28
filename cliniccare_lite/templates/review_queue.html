@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head><title>Review Queue - ClinicCare-Lite</title></head>
+<head>
+    <title>Review Queue - ClinicCare-Lite</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
 <body>
-    <h1>Pending Tasks</h1>
-    <ul>
-    {% for task in tasks %}
-        <li>
-            Task #{{ task.task_id }} — {{ task.description }} — Category: {{ task.category }}
-            <form method="POST" action="{{ url_for('update_task_category', task_id=task.task_id) }}">
-                <select name="category">
-                    <option value="pending">Pending</option>
-                    <option value="in_review">In Review</option>
-                    <option value="resolved">Resolved</option>
-                    <option value="flagged_urgent">Flagged Urgent</option>
-                </select>
-                <button type="submit">Update</button>
-            </form>
-        </li>
-    {% endfor %}
-    </ul>
+    <div class="container">
+        <h1>Pending Tasks</h1>
+        <ul>
+        {% for task in tasks %}
+            <li>
+                Task #{{ task.task_id }} — {{ task.description }} — Category: {{ task.category }}
+                <form method="POST" action="{{ url_for('update_task_category', task_id=task.task_id) }}">
+                    <select name="category">
+                        <option value="pending">Pending</option>
+                        <option value="in_review">In Review</option>
+                        <option value="resolved">Resolved</option>
+                        <option value="flagged_urgent">Flagged Urgent</option>
+                    </select>
+                    <button type="submit">Update</button>
+                </form>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+    <footer>ClinicCare-Lite — Group 3 C'29</footer>
 </body>
 </html>
