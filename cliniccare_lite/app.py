@@ -18,6 +18,9 @@ os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 # --- in-memory "database" ---
 users = {}
+# TEMPORARY: seed one clinician test account for team testing.
+# Public /register always creates patients only, by design.
+users["99999999"] = User("Test Clinician", "99999999", "clinician123", role="clinician")
 tasks = {}
 next_task_id = [1]
 messages = []
@@ -96,12 +99,11 @@ def login():
 
     return render_template('login.html')
 
-
 @app.route('/dashboard')
 @login_required
 def dashboard():
     user = users.get(session['user_id'])
-    return render_template('dashboard.html', name=user.name, role=user.role)
+    return render_template('dashboard.html', name=user.name, role=user.role, id_number=user.id_number)
 
 
 @app.route('/staff-only')
@@ -225,6 +227,21 @@ def analytics_dashboard():
     avg_turnaround = calculate_average_turnaround(tasks)
     breakdown = calculate_category_breakdown(tasks)
     return render_template('analytics.html', avg_turnaround=avg_turnaround, breakdown=breakdown)
+
+@app.route('/api/tasks')
+@role_required('clinician')
+def api_tasks():
+    task_list = [
+        {
+            "task_id": t.task_id,
+            "patient_id": t.patient_id,
+            "category": t.category,
+            "created_at": t.created_at,
+            "resolved_at": t.resolved_at,
+        }
+        for t in tasks.values()
+    ]
+    return {"tasks": task_list}
 
 
 if __name__ == '__main__':
