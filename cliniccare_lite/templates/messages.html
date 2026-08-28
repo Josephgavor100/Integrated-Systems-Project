@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>Messages - ClinicCare-Lite</title></head>
+<body>
+    <h1>Your Messages</h1>
+    <ul>
+    {% for msg in messages %}
+        <li>From {{ msg.sender_id }} to {{ msg.recipient_id }}: {{ msg.content }}</li>
+    {% endfor %}
+    </ul>
+    <form method="POST" action="{{ url_for('send_message') }}">
+        To (ID number): <input name="recipient_id" required><br>
+        <textarea name="content" required></textarea><br>
+        <button type="submit">Send</button>
+    </form>
+</body>
+</html>
