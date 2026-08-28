@@ -189,12 +189,12 @@ def view_messages():
     my_messages = [m for m in messages if m.recipient_id == my_id or m.sender_id == my_id]
     return render_template('messages.html', messages=my_messages)
 
-
 @app.route('/messages/send', methods=['POST'])
 @login_required
 def send_message():
-    recipient_id = request.form['recipient_id']
-    content = request.form['content']
+    data = request.get_json()
+    recipient_id = data['recipient_id']
+    content = data['content']
     msg = Message(
         message_id=next_message_id[0],
         sender_id=session['user_id'],
@@ -204,15 +204,18 @@ def send_message():
     )
     messages.append(msg)
     next_message_id[0] += 1
-    return redirect(url_for('view_messages'))
+    return {"status": "sent", "message_id": msg.message_id}
 
 
 @app.route('/messages/poll')
 @login_required
 def poll_messages():
     my_id = session['user_id']
-    count = len([m for m in messages if m.recipient_id == my_id])
-    return {"unread_count": count}
+    unread = [
+        {"sender_id": m.sender_id, "content": m.content, "timestamp": m.timestamp}
+        for m in messages if m.recipient_id == my_id
+    ]
+    return {"unread_count": len(unread), "messages": unread}
 
 
 # --- analytics ---
