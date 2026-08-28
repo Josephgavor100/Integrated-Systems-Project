@@ -144,6 +144,26 @@ def upload_file():
 
 
 # --- tasks / review ---
+
+@app.route('/tasks/submit', methods=['GET', 'POST'])
+@login_required
+def submit_task():
+    if request.method == 'POST':
+        description = request.form['description']
+
+        task = HealthTask(
+            task_id=next_task_id[0],
+            patient_id=session['user_id'],
+            description=description
+        )
+        tasks[task.task_id] = task
+        next_task_id[0] += 1
+
+        flash("Your request has been submitted.")
+        return redirect(url_for('dashboard'))
+
+    return render_template('submit_task.html')
+
 @app.route('/tasks/review')
 @role_required('clinician')
 def review_queue():
