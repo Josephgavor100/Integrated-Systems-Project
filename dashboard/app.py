@@ -128,13 +128,14 @@ st.divider()
 # TABS
 # ============================================================
 
-overview_tab, network_tab, map_tab, reliability_tab, search_tab = st.tabs(
+overview_tab, network_tab, map_tab, reliability_tab, search_tab, restoration_tab = st.tabs(
     [
         "📊 Overview",
         "🕸️ Network Analysis",
         "🗺️ Geography Map",
         "📈 Reliability / BI",
-        "🔎 Substation Search"
+        "🔎 Substation Search",
+        "🛠️ Restoration Planning"
     ]
 )
 
@@ -479,6 +480,123 @@ with search_tab:
             st.write(
                 f"**Status:** {row['Source Status']}"
             )
+
+
+# ============================================================
+# TAB 6 — RESTORATION SCENARIO PLANNING
+# ============================================================
+
+with restoration_tab:
+
+    st.header("Restoration Scenario Planning")
+    st.write(
+        "Simulate a transmission-line outage and compare alternate "
+        "routes between substations. Scenarios do not modify the baseline grid."
+    )
+
+    scenario_graph = G.copy()
+    line_options = []
+    line_lookup = {}
+    for _, line in df.iterrows():
+        source = line["Source Substation ID"]
+        destination = line["Destination Substation ID"]
+        line_id = line.get("Line ID", f"{source}-{destination}")
+        label = (
+            f"Line {line_id}: {line.get('Source Substation', source)} → "
+            f"{line.get('Destination Substation', destination)}"
+        )
+        line_options.append(label)
+        line_lookup[label] = (source, destination)
+
+    outage_label = st.selectbox(
+        "Select line outage to simulate",
+        line_options,
+        key="restoration_outage"
+    )
+    outage_edge = line_lookup[outage_label]
+    if scenario_graph.has_edge(*outage_edge):
+        scenario_graph.remove_edge(*outage_edge)
+
+    node_labels = {}
+    for _, line in df.iterrows():
+        node_labels[line["Source Substation ID"]] = line.get(
+            "Source Substation", str(line["Source Substation ID"])
+        )
+        node_labels[line["Destination Substation ID"]] = line.get(
+            "Destination Substation", str(line["Destination Substation ID"])
+        )
+
+    node_ids = sorted(G.nodes(), key=lambda node: str(node))
+    source_id = st.selectbox(
+        "Restoration route origin",
+        node_ids,
+        format_func=lambda node: f"{node_labels.get(node, node)} (ID {node})",
+        key="restoration_source"
+    )
+    destination_choices = [node for node in node_ids if node != source_id]
+    destination_id = st.selectbox(
+        "Restoration route destination",
+        destination_choices,
+        format_func=lambda node: f"{node_labels.get(node, node)} (ID {node})",
+        key="restoration_destination"
+    )
+    max_routes = st.slider(
+        "Alternate routes to compare",
+        min_value=1,
+        max_value=5,
+        value=3,
+        key="restoration_route_count"
+    )
+
+    baseline_components = nx.number_connected_components(G)
+    scenario_components = nx.number_connected_components(scenario_graph)
+    metric_col1, metric_col2, metric_col3 = st.columns(3)
+    metric_col1.metric("Baseline components", baseline_components)
+    metric_col2.metric("After outage", scenario_components)
+    metric_col3.metric(
+        "Connectivity impact",
+        "Network split" if scenario_components > baseline_components else "No split"
+    )
+
+    try:
+        routes = list(nx.shortest_simple_paths(
+            scenario_graph, source_id, destination_id
+        ))[:max_routes]
+    except (nx.NetworkXNoPath, nx.NodeNotFound):
+        routes = []
+
+    if routes:
+        route_rows = []
+        for rank, route in enumerate(routes, start=1):
+            route_rows.append({
+                "Rank": rank,
+                "Route": " → ".join(
+                    f"{node_labels.get(node, node)} ({node})" for node in route
+                ),
+                "Hops": len(route) - 1,
+                "Substations": len(route)
+            })
+        st.subheader("Available Alternate Routes")
+        st.dataframe(
+            pd.DataFrame(route_rows),
+            use_container_width=True,
+            hide_index=True
+        )
+        st.success(
+            f"{len(routes)} alternate route(s) found after removing "
+            f"the selected line."
+        )
+    else:
+        st.warning(
+            "No alternate route is available between the selected substations "
+            "after this outage. Consider a different restoration origin or destination."
+        )
+
+    if scenario_components > baseline_components:
+        st.error(
+            "This outage increases the number of disconnected grid components. "
+            "Prioritize restoration of the selected line or identify a switching plan."
+        )
 
 
 # ============================================================
